@@ -9,5 +9,5 @@ function api() {
       getMembers,
     };
   }
-  
-  export default api();
+
+export default api();
