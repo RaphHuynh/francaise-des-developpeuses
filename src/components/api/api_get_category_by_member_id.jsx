@@ -1,7 +1,6 @@
 function api_list_category() {
     const getCategoryByIdMember = (id) => {
-        console.log(id);
-      return fetch("http://127.0.0.1:8000/members/list_category"+id, {
+      return fetch("http://127.0.0.1:8000/members/list_category/"+id, {
         type: "GET",
       }).then((res) => res.json());
     };

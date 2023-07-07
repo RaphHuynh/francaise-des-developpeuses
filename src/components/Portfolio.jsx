@@ -1,53 +1,80 @@
 import { useEffect, useState } from "react";
-import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { useParams } from "react-router-dom";
 import api_profil from "./api/api_get_member_by_id";
-import image from "../assets/portfolio_test.png"
+import api_get_network_by_id from "./api/api_get_network_by_id";
+import api_get_category_by_member_id from "./api/api_get_category_by_member_id";
+import github from "./../assets/github.svg";
+import linkedin from "./../assets/linkedin.svg";
 
 function Portfolio(){
     const [resume, setResume] = useState([]);
+    const [networks, setNetwork] = useState([]);
+    const [categories, setCategory] = useState([]);
     const {portfolio} = useParams();
-    const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() => {
-        !isMounted &&
+    useEffect(() =>{
+        api_get_network_by_id.getNetworkById(portfolio).then((json) =>{
+            setNetwork(json); 
+        });
+        api_get_category_by_member_id.getCategoryByIdMember(portfolio).then((json) =>{
+            setCategory(json);
+        });
         api_profil.getMemberById(portfolio).then((json) => {
             setResume(json);
-            setIsMounted(true);
         });
-    }, [isMounted])
+    }, []);
+
+    console.log(networks);
 
     return (
         <main>
             <NavBar/>
-            <section className="flex items-center justify-center w-full min-h-screen px-44 py-20">
+            <section className="flex items-center justify-center w-full min-h-screen px-20 py-20">
                 <div>
-                    <article className="flex mb-3 gap-2">
-                        <article className="w-1/2 p-5 flex flex-col justify-center border-2 border-black rounded-lg shadow-[0px_5px_0px_0px_rgba(0,0,0)] bg-black/5">
-                            <h1 className="text-5xl text-indigo-800">{resume.username}</h1>
-                            <h2 className="text-4xl text-red-700">{resume.firstname} {resume.lastname}</h2>
-                            <p className="text-lg text-justify">{resume.description}</p>
+                    <article className="flex mb-20 items-baseline w-full border-b pb-4">
+                        <h1 className="text-7xl capitalize ">{resume.firstname} {resume.lastname}</h1>
+                        <p className="text-4xl ml-2">#{resume.username}</p>
+                    </article>
+                    <article className="flex mb-3 gap-8">
+                        <article className="w-1/2 flex flex-col">
+                            <h1 className="text-5xl mb-5 text-beige bg-black uppercase py-1 px-1 top-0">Description</h1>
+                            <p className="text-lg text-justify px-1">{resume.description}</p>
                             </article>
-                        <figure className="w-1/2 border-2 border-black rounded-lg shadow-[0px_5px_0px_0px_rgba(0,0,0)]">
-                            <a href={resume.url_portfolio}>
-                                <img src={image} className="transition delay-200 rounded-r-sm object-cover h-full w-full hover:sepia"></img>
+                        <figure className="w-1/2">
+                            <a href={resume.url_portfolio} target="_blank">
+                                <img src={"http://127.0.0.1:8000/members/image_portfolio_by_id?id_member="+portfolio} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
                             </a>
                         </figure>
                     </article>
-                    <article className="flex gap-2">
-                        <article className="w-1/2 border-2 border-black rounded-lg shadow-[0px_5px_0px_0px_rgba(0,0,0)] p-5 bg-black/5">
-                            <h3 className="text-3xl text-indigo-800">Categories</h3>
-                            <p className="text-lg">ReactJS, Front-End</p>
+                    <article className="flex gap-8">
+                        <article className="w-1/2">
+                            <h1 className="text-5xl my-5 text-beige bg-black uppercase py-1 px-1">Categories</h1>
+                            <div className="flex gap-4">
+                                {categories.map((category) => (
+                                <>
+                                    <span className="text-xl border-2 border-black rounded-sm px-2 py-1">{category.name}</span>
+                                </>
+                                ))
+                                }
+                            </div>
+
                         </article>
-                        <aside className="w-1/2 border-2 border-black rounded-lg shadow-[0px_5px_0px_0px_rgba(0,0,0)] p-5 bg-black/5">
-                            <h3 className="text-3xl text-indigo-800">Network</h3>
-                            <p>Twitter ,Github, Linkedln</p>
+                        <aside className="w-1/2">
+                            <h1 className="text-5xl my-5 text-beige bg-black uppercase py-1 px-1">Network</h1>
+                            <div className="flex gap-4">
+                            {networks.map((network) => (
+                                <>
+                                    {network.name == "github" && <a href={network.url} target="_blank" className="bg-red"><img src={github} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
+                                    {network.name == "linkedin" && <a href={network.url} target="_blank"><img src={linkedin} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
+                                </>
+                            ))
+                            }
+                            </div>
                         </aside>
                     </article>
                 </div>
             </section>
-            <Footer/>
         </main>
     )
 }

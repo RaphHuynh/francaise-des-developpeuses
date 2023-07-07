@@ -1,22 +1,45 @@
-import marianne from "../assets/marianne.png"
-import Footer from "./Footer";
 import NavBar from "./NavBar";
+import About from "./component/About";
+import RandomProfil from "./component/RandomProfil";
+
 
 function Home(){
+
+
+
     return (
         <main>
             <NavBar/>
-            <section className="flex items-center justify-center w-full min-h-screen">
-                <article className="w-3/6">
-                    <h1 className="text-5xl mb-10">Française des développeuses</h1>
-                    <p className="text-xl text-justify mb-10">Bienvenue sur notre site mettant en avant les portfolios de femmes développeuses françaises. Découvrez la créativité, l'expertise et la passion de ces femmes exceptionnelles qui font leur marque dans l'industrie de l'informatique. Explorez une variété de compétences techniques, de projets innovants et de parcours inspirants. Rejoignez-nous dans notre mission de promouvoir la diversité et l'inclusion dans le domaine de la programmation en France.</p>
-                    <a href="https://discord.gg/8nKN4fduVD" className="transition delay-75 bg-black text-beige rounded-full py-2 px-4 text-xl hover:bg-indigo-800">Discord</a>
+            <section className="w-full min-h-screen px-20 py-32 ">
+                <article className="w-full">
+                    <h1 className="text-9xl text-center mb-10 tracking-tighter uppercase pb-10 border-b">Française des développeuses</h1>
+                    <section className="grid grid-cols-2 gap-10 border-b pb-10">
+                        <aside className="">
+                            <h1 className="text-6xl mb-10 uppercase bg-black text-beige text-center">Bienvenue</h1>
+                            <p className="text-2xl mb-12 text-justify">Le site à pour but de mettre en avant les profils des femmes développeuses françaises. Découvrez la créativité, l'expertise et la passion de ces femmes exceptionnelles qui font leur marque dans l'industrie de l'informatique. Explorez une variété de compétences techniques, de projets innovants et de parcours inspirants. Rejoignez-nous dans notre mission de promouvoir la diversité et l'inclusion des femmes dans le domaine de la programmation en France.</p>
+                            <p className="text-right">© Par Raphaëlle Huynh</p>
+                        </aside>
+                        <figure>
+                            <h1 className="text-6xl mb-10 uppercase bg-black text-beige text-center">Profil mise en avant</h1>
+                            <RandomProfil/>
+                        </figure>
+                    </section>
                 </article>
-                <figure className="max-h-screen ">
-                    <img src={marianne} className="max-h-screen marianne "></img>
-                </figure>
+                <article>
+                    <h1 className="text-7xl text-center tracking-tighter uppercase py-10 border-b">A propos</h1>
+                    <section className="grid grid-cols-2 gap-10 border-b py-10">
+                        <aside className="">
+                            <h1 className="text-6xl mb-10 uppercase bg-black text-beige text-center">COMMENT POSTULER ?</h1>
+                            <p className="text-2xl mb-12 text-justify">Pour soumettre votre candidature, vous devez vous connectez avec un compte Github ou Linkedin. Ensuite, vous devrez completer votre profil et le soumettre. Votre demande sera ensuite étudiée.</p>
+                            <p className="text-right">© Par Raphaëlle Huynh</p>
+                        </aside>
+                        <aside>
+                            <h1 className="text-6xl mb-10 uppercase bg-black text-beige text-center">Qui suis-je ?</h1>
+                            <About/>
+                        </aside>
+                    </section>
+                </article>
             </section>
-            <Footer/>
         </main>
     )
 }

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api/api_get_all";
-import image from "../../assets/portfolio_test.png"
 
 function Card(){
     const [members, setMembers] = useState([]);
@@ -16,13 +15,13 @@ function Card(){
     }, [isMounted]);
 
     return (
-        <article className="grid grid-cols-3 gap-8">
+        <article className="grid grid-cols-4 gap-6">
             {members.map((member) =>(
-                <Link to={`${member.id_member}`} key={member.id_member} className="transition delay-75 border-2 active:border-b border-black rounded-lg shadow-[0px_5px_0px_0px_rgba(0,0,0)]">
-                    <img src={"http://127.0.0.1:8000/members/image_portfolio_by_id?id_member="+member.id_member} width={400} height={250} className="rounded-t-sm"></img>
-                    <aside className="p-2 border-t-2 border-black">
-                        <h1 className="text-indigo-800 uppercase">{member.username} {member.id_member}</h1>
-                        <p className="text-right text-red-700">{member.category_name}</p>
+                <Link to={`${member.id_member}`} key={member.id_member} className="transition delay-75  active:border-b h-min hover:scale-105 duration-50 border bg-black/5">
+                    <img src={"http://127.0.0.1:8000/members/image_portfolio_by_id?id_member="+member.id_member} alt={`${member.username}`} className="object-cover w-full h-56 hover:contrast-125 duration-200 border-b-2"></img>
+                    <aside className="p-2 h-1/3">
+                        <h1 className="uppercase text-beige bg-black py-1 px-1 mb-2 w-min">{member.username}</h1>
+                        <p className="text-right">{member.category_name}</p>
                     </aside>
                 </Link>
             ))}
