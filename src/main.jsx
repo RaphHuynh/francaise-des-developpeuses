@@ -12,6 +12,7 @@ import Portfolios from "./components/Portfolios"
 import Connexion from "./components/Connexion"
 import Deconnexion from "./components/Deconnexion"
 import NavBar from "./components/NavBar";
+import FromProfil from "./components/FormProfil";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/deconnexion",
     element: <Deconnexion/>,
+  },
+  {
+    path:"/profil/:member",
+    element: <FromProfil/>
   }
 ]);
 

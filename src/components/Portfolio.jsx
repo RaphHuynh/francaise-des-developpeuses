@@ -33,12 +33,12 @@ function Portfolio(){
             <section className="flex items-center justify-center w-full min-h-screen px-5 md:px-20 pt-20 pb-10 md:py-20">
                 <div>
                     <article className="flex mb-5 md:mb-20 items-baseline w-full border-b pb-4">
-                        <h1 className="text-2xl md:text-7xl capitalize ">{resume.firstname} {resume.lastname}</h1>
+                        <h1 className="text-2xl md:text-6xl capitalize ">{resume.firstname} {resume.lastname}</h1>
                         <p className="md:text-4xl ml-2">#{resume.username}</p>
                     </article>
                     <article className="flex flex-col-reverse md:flex-row gap-4 mb-3 md:gap-8">
                         <article className="md:w-1/2 flex flex-col">
-                            <h1 className="text-4xl md:text-5xl mb-5 text-beige bg-black uppercase py-1 px-1 top-0">Description</h1>
+                            <h1 className="text-4xl md:text-4xl mb-5 text-beige bg-black uppercase py-1 px-1 top-0">Description</h1>
                             <p className="md:text-lg text-justify px-1">{resume.description}</p>
                             </article>
                         <figure className="md:w-1/2">
@@ -49,7 +49,7 @@ function Portfolio(){
                     </article>
                     <article className="flex flex-col md:flex-row gap-8">
                         <article className="md:w-1/2">
-                            <h1 className="text-4xl md:text-5xl my-5 text-beige bg-black uppercase py-1 px-1">Categories</h1>
+                            <h1 className="text-4xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Categories</h1>
                             <div className="flex gap-4">
                                 {categories.map((category) => (
                                 <>
@@ -61,7 +61,7 @@ function Portfolio(){
 
                         </article>
                         <aside className="md:w-1/2">
-                            <h1 className="text-4xl md:text-5xl my-5 text-beige bg-black uppercase py-1 px-1">Network</h1>
+                            <h1 className="text-4xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Network</h1>
                             <div className="flex gap-4">
                             {networks.map((network) => (
                                 <>
