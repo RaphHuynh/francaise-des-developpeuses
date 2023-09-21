@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     element: <Portfolios/>,
   },
   {
-    path: "/:profil",
+    path: "/profil/:profil",
     element: <Profil/>,
   },
   {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     element: <Deconnexion/>,
   },
   {
-    path:"/profil/:member",
+    path:"/profil/:profil/edit",
     element: <FromProfil/>
   }
 ]);

@@ -1,10 +1,10 @@
-import image from "../../assets/moi.jpg";
+import image from "../../assets/moi.jpeg";
 
 function About(){
     return (
         <article className="lg:grid lg:grid-cols-3 md:gap-8">
             <aside className="">
-                <img src={image}  className="grayscale contrast-125"></img>
+                <img src={image}></img>
             </aside>
             <aside className="col-span-2 mt-5">
                 <p className="md:text-lg lg:text-2xl text-justify mb-5">

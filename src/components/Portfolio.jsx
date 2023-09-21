@@ -25,8 +25,6 @@ function Portfolio(){
         });
     }, []);
 
-    console.log(networks);
-
     return (
         <main>
             <NavBar/>
@@ -65,7 +63,7 @@ function Portfolio(){
                             <div className="flex gap-4">
                             {networks.map((network) => (
                                 <>
-                                    {network.name == "github" && <a href={network.url} target="_blank" className="bg-red"><img src={github} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
+                                    {network.name == "github" && <a href={network.url} target="_blank"><img src={github} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
                                     {network.name == "linkedin" && <a href={network.url} target="_blank"><img src={linkedin} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
                                 </>
                             ))
