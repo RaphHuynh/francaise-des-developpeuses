@@ -4,8 +4,8 @@ export default NavBar;
 
 function NavBar(){
     return (
-        <nav className="fixed w-full z-10 border-b border-black">
-            <div className="flex items-center py-2 mx-5 md:mx-10">
+        <nav className="fixed w-full z-10 border-b border-black px-20">
+            <div className="flex items-center py-2">
                 <h1 className="text-left md:text-xl">FDD</h1>
                 <div className="flex flex-row mr-0 ml-auto gap-2">
                     <Link to="/" className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-gray-700 hover:text-white py-2">Accueil</Link>
