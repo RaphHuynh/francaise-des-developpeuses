@@ -13,6 +13,8 @@ import Connexion from "./components/Connexion"
 import Deconnexion from "./components/Deconnexion"
 import NavBar from "./components/NavBar";
 import FromProfil from "./components/FormProfil";
+import FromCategory from "./components/FormCategory";
+import FromNetwork from "./components/FormNetwork";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
   {
     path:"/profil/:profil/edit",
     element: <FromProfil/>
+  },
+  {
+    path:"/profil/:profil/edit/network",
+    element: <FromNetwork/>
+  },
+  {
+    path:"/profil/:profil/edit/category",
+    element: <FromCategory/>
   }
 ]);
 

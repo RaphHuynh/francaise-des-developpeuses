@@ -44,7 +44,7 @@ function Profil() {
                 <section className="w-full">
                     <section className="flex justify-center w-full py-5 ">
                         <div className="w-full">
-                            <article className="flex mb-5 md:mb-20 items-baseline w-full border-b pb-4">
+                            <article className="flex mb-10 items-baseline w-full border-b">
                                 {resume.firstname != null && <h1 className="text-2xl md:text-6xl capitalize ">{resume.firstname} {resume.lastname}</h1>}
                                 {resume.firstname == null && <h1 className="text-2xl md:text-6xl capitalize ">Prénom Nom</h1>}
                                 <p className="md:text-4xl ml-2">#{resume.username}</p>
@@ -57,11 +57,11 @@ function Profil() {
                                     {resume.description != null && <p className="md:text-lg text-justify px-1">{resume.description}</p>}
                                 </article>
                                 <figure className="md:w-1/2">
-                                    {resume.url_portfolio!=null && <a href={resume.url_portfolio} target="_blank">
+                                    {resume.image_portfolio!=null && <a href={resume.url_portfolio} target="_blank">
                                         <img src={"http://127.0.0.1:8000/members/image_portfolio_by_id?id_member=" + profil} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
                                     </a>
                                     }
-                                    {resume.url_portfolio == null && <img src={defaut}></img>}
+                                    {resume.image_portfolio == null && <img src={defaut}></img>}
                                 </figure>
                             </article>
                             <article className="flex flex-col md:flex-row gap-8">
@@ -74,19 +74,20 @@ function Profil() {
                                             </>
                                         ))
                                         }
+                                        <Link to={`/profil/${profil}/edit/category`} key={profil} className="flex border-2 border-black uppercase py-1 px-3 hover:bg-black hover:text-white items-center">+</Link>
                                     </div>
-
                                 </article>
                                 <aside className="md:w-1/2">
                                     <h1 className="text-4xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Network</h1>
                                     <div className="flex gap-4">
                                         {networks.map((network) => (
                                             <>
-                                                {network.name == "github" && <a href={network.url} target="_blank" className="bg-red"><img src={github} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
-                                                {network.name == "linkedin" && <a href={network.url} target="_blank"><img src={linkedin} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
+                                                {network.name == "github" && <a href={network.url} target="_blank" className="bg-red"><img src={github} height={40} width={40} className="transition delay-75 hover:scale-125"></img></a>}
+                                                {network.name == "linkedin" && <a href={network.url} target="_blank"><img src={linkedin} height={40} width={40} className="transition delay-75 hover:scale-125"></img></a>}
                                             </>
                                         ))
                                         }
+                                        <Link to={`/profil/${profil}/edit/network`} key={profil} className="flex border-2 border-black uppercase py-1 px-3 hover:bg-black hover:text-white items-center">+</Link>
                                     </div>
                                 </aside>
                             </article>
