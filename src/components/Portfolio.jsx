@@ -41,7 +41,7 @@ function Portfolio(){
                             </article>
                         <figure className="md:w-1/2">
                             <a href={resume.url_portfolio} target="_blank">
-                                <img src={"http://127.0.0.1:8000/members/image_portfolio_by_id?id_member="+portfolio} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
+                                <img src={"http://127.0.0.1:8000/member/image_portfolio_by_id?id_member="+portfolio} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
                             </a>
                         </figure>
                     </article>

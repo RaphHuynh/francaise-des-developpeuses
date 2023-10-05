@@ -27,8 +27,6 @@ function Profil() {
         });
     }, []);
 
-    console.log(networks, categories, resume);
-
     return (
         <main>
             <NavBar />
@@ -58,7 +56,7 @@ function Profil() {
                                 </article>
                                 <figure className="md:w-1/2">
                                     {resume.image_portfolio!=null && <a href={resume.url_portfolio} target="_blank">
-                                        <img src={"http://127.0.0.1:8000/members/image_portfolio_by_id?id_member=" + profil} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
+                                        <img src={"http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=" + profil} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
                                     </a>
                                     }
                                     {resume.image_portfolio == null && <img src={defaut}></img>}
@@ -82,6 +80,7 @@ function Profil() {
                                     <div className="flex gap-4">
                                         {networks.map((network) => (
                                             <>
+                                                {console.log(networks)}
                                                 {network.name == "github" && <a href={network.url} target="_blank" className="bg-red"><img src={github} height={40} width={40} className="transition delay-75 hover:scale-125"></img></a>}
                                                 {network.name == "linkedin" && <a href={network.url} target="_blank"><img src={linkedin} height={40} width={40} className="transition delay-75 hover:scale-125"></img></a>}
                                             </>

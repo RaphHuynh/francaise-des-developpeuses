@@ -26,7 +26,7 @@ function FromProfil(){
         })
         console.log(JSON.stringify(object));
         debugger;
-        fetch('http://127.0.0.1:8000/members', {
+        fetch('http://127.0.0.1:8000/member', {
             method: "PATCH",headers: {"content-type": "application/json"}, body: JSON.stringify(object)})
             .then(res => res.json())
             .then(json => setUser(json.user))
