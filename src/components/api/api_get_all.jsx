@@ -1,6 +1,6 @@
 function api() {
     const getMembers = () => {
-      return fetch("http://127.0.0.1:8000/members", {
+      return fetch("http://127.0.0.1:8000/member", {
         type: "GET",
       }).then((res) => res.json());
     };
