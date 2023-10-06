@@ -33,9 +33,6 @@ function FormCategory() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(profil);
-    console.log(JSON.stringify({id_member:profil,id_category: selectedCategories}));
-
     try {
       const response = await fetch('http://127.0.0.1:8000/member/category', {
         method: 'POST',
