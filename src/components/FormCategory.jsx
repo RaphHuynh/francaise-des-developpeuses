@@ -168,7 +168,7 @@ function FormCategory() {
             Catégories
           </h1>
           <p className="text-sm lg:text-lg text-right">
-            Vous pouvez sélecter des catégories ou retirer des catégories sur cette page.
+            Vous pouvez sélectionner des catégories ou retirer des catégories sur cette page.
           </p>
         </article>
         <article className="w-full pt-12 gap-4 flex">
