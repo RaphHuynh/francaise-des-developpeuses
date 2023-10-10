@@ -162,7 +162,7 @@ function FormCategory() {
   return (
     <div>
       <NavBar />
-      <section className="flex flex-col w-full px-5 md:px-20 pt-20">
+      <section className="flex flex-col w-full px-5 md:px-20 pt-28">
         <article className="w-full grid grid-cols-2 border-b pb-10 items-center">
           <h1 className="text-2xl lg:text-4xl xl:text-6xl uppercase">
             Catégories
@@ -189,7 +189,7 @@ function FormCategory() {
                 </label>
               ))}
             </div>
-            <button type="submit" className="border-2 border-black uppercase py-2 px-3 bg-black text-beige hover:scale-110 transition delay-75">Soumettre</button>
+            <button type="submit" className="border-2 w-full border-black uppercase py-2 px-3 bg-black text-beige hover:scale-110 transition delay-75">Soumettre</button>
             <p className="my-4">
               {message && (
                 <span className="border-2 border-slate-800 rounded-sm px-2 py-1">
@@ -216,7 +216,7 @@ function FormCategory() {
                 </label>
               ))}
             </div>
-            <button type="submit" className="border-2 border-black uppercase py-2 px-3 bg-black text-beige hover:scale-110 transition delay-75">Supprimer</button>
+            <button type="submit" className="border-2 w-full border-black uppercase py-2 px-3 bg-black text-beige hover:scale-110 transition delay-75">Supprimer</button>
             <p className="my-4">
               {deleteMessage && (
                 <span className="border-2 border-slate-800 rounded-sm px-2 py-1">
