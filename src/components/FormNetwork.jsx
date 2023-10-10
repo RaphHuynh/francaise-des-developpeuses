@@ -29,12 +29,16 @@ function FormNetwork() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
+    // Filtrer les entrées qui sont vides ou nulles
+    const filteredFormData = formData.filter((data) => data.url && data.url.trim() !== '');
+  
     const json = {
-        id_member: profil,
-        id_network: formData.map((data) => data.id_network),
-        url: formData.map((data) => data.url.trim()),
+      id_member: profil,
+      id_network: filteredFormData.map((data) => data.id_network),
+      url: filteredFormData.map((data) => data.url.trim()),
     };
-
+  
     fetch("http://127.0.0.1:8000/member/network", {
       method: "POST",
       headers: {
@@ -52,7 +56,7 @@ function FormNetwork() {
       .catch((error) => {
         console.error("Erreur lors de la mise à jour:", error);
       });
-  };
+  };  
 
   return (
     <>
