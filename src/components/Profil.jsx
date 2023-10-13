@@ -14,6 +14,7 @@ function Profil() {
     const [networks, setNetwork] = useState([]);
     const [categories, setCategory] = useState([]);
     const { profil } = useParams();
+    const [imageUrl, setImageUrl] = useState(null); // Ajoutez un état pour stocker l'URL de l'image
 
     useEffect(() => {
         api_get_network_by_id.getNetworkById(profil).then((json) => {
@@ -24,6 +25,19 @@ function Profil() {
         });
         api_profil.getMemberById(profil).then((json) => {
             setResume(json);
+
+            const imageUrl = `http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=${profil}`;
+
+            // Attendre que l'image soit chargée avant de la définir
+            const img = new Image();
+            img.onload = () => {
+                setImageUrl(imageUrl);
+            };
+            img.onerror = () => {
+                // En cas d'erreur de chargement de l'image, définir imageUrl sur null ou l'image par défaut
+                setImageUrl(defaut);
+            };
+            img.src = imageUrl;
         });
     }, []);
 
@@ -55,11 +69,14 @@ function Profil() {
                                     {resume.description != null && <p className="md:text-lg text-justify px-1">{resume.description}</p>}
                                 </article>
                                 <figure className="md:w-1/2">
-                                    {resume.image_portfolio!=null && <a href={resume.url_portfolio} target="_blank">
-                                        <img src={"http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=" + profil} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
-                                    </a>
-                                    }
-                                    {resume.image_portfolio == null && <img src={defaut}></img>}
+                                    {console.log("image:" + imageUrl)}
+                                    {imageUrl ? (
+                                        <a href={resume.url_portfolio} target="_blank">
+                                            <img src={imageUrl} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black" />
+                                        </a>
+                                    ) : (
+                                        <img src={defaut} alt="Image par défaut" />
+                                    )}
                                 </figure>
                             </article>
                             <article className="flex flex-col md:flex-row gap-8">
@@ -70,8 +87,7 @@ function Profil() {
                                             <>
                                                 <span className="md:text-xl border-2 border-black rounded-sm px-2 py-1">{category.name}</span>
                                             </>
-                                        ))
-                                        }
+                                        ))}
                                         <Link to={`/profil/${profil}/edit/category`} key={profil} className="flex border-2 border-black uppercase py-1 px-3 hover:bg-black hover:text-white items-center">+</Link>
                                     </div>
                                 </article>
@@ -80,12 +96,10 @@ function Profil() {
                                     <div className="flex gap-4">
                                         {networks.map((network) => (
                                             <>
-                                                {console.log(networks)}
                                                 {network.name == "github" && <a href={network.url} target="_blank" className="bg-red"><img src={github} height={40} width={40} className="transition delay-75 hover:scale-125"></img></a>}
                                                 {network.name == "linkedin" && <a href={network.url} target="_blank"><img src={linkedin} height={40} width={40} className="transition delay-75 hover:scale-125"></img></a>}
                                             </>
-                                        ))
-                                        }
+                                        ))}
                                         <Link to={`/profil/${profil}/edit/network`} key={profil} className="flex border-2 border-black uppercase py-1 px-3 hover:bg-black hover:text-white items-center">+</Link>
                                     </div>
                                 </aside>
