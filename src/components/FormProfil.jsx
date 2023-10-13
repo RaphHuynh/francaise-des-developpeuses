@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import NavBar from "./NavBar";
 import defaut from "../assets/defaut.png";
 import api_profil from "./api/api_get_member_by_id";
+import { Link } from "react-router-dom";
 
 function FromProfil() {
     const id = useParams();
@@ -137,6 +138,7 @@ function FromProfil() {
                         </form>
                     </article>
                 </section>
+                <Link to={`/profil/${id.profil}`} key={id.profil} className="text-3xl bottom-2 fixed hover:bg-black hover:text-white rounded-full px-2 py-1 transition delay-100">&#8592;</Link>
             </section>
         </>
     )

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function FormCategory() {
   const [categories, setCategories] = useState([]);
@@ -229,6 +230,7 @@ function FormCategory() {
             </p>
           </form>
         </article>
+        <Link to={`/profil/${profil}`} key={profil} className="text-3xl bottom-2 fixed hover:bg-black hover:text-white rounded-full px-2 py-1 transition delay-100">&#8592;</Link>
       </section>
     </div>
   );
