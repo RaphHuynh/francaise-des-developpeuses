@@ -2,21 +2,20 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api/api_get_all";
 
-function Card({ currentPage, onPageChange, updateTotalPages }) {
+function Card({ currentPage, updateTotalPages }) {
     const [members, setMembers] = useState([]);
     const profilesPerPage = 8;
-
     useEffect(() => {
         api.getMembers().then((json) => {
             setMembers(json);
 
-            // Calculez le nombre total de pages en fonction du nombre de profils
+            // Calculer le nombre total de pages en fonction du nombre de profils
             const total = Math.ceil(json.length / profilesPerPage);
             updateTotalPages(total);
         });
     }, [updateTotalPages]);
 
-    // Calculez l'index de début et de fin pour les profils sur la page actuelle
+    // Calculer l'index de début et de fin pour les profils sur la page actuelle
     const indexOfLastProfile = currentPage * profilesPerPage;
     const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;
     const currentProfiles = members.slice(indexOfFirstProfile, indexOfLastProfile);
