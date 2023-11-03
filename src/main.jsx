@@ -10,8 +10,6 @@ import Profil from "./components/Profil"
 import Portfolio from "./components/Portfolio"
 import Portfolios from "./components/Portfolios"
 import Connexion from "./components/Connexion"
-import Deconnexion from "./components/Deconnexion"
-import NavBar from "./components/NavBar";
 import FromProfil from "./components/FormProfil";
 import FromCategory from "./components/FormCategory";
 import FromNetwork from "./components/FormNetwork";
@@ -36,10 +34,6 @@ const router = createBrowserRouter([
   {
     path: "/connexion",
     element: <Connexion/>,
-  },
-  {
-    path: "/deconnexion",
-    element: <Deconnexion/>,
   },
   {
     path:"/profil/:profil/edit",

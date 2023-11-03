@@ -28,7 +28,30 @@ function NavBar() {
             console.error('Error parsing cookie:', e);
         }
     }, []);
- 
+
+    // ...
+
+    const handleDeconnexion = () => {
+        // Effectuer la requête de déconnexion vers l'endpoint FastAPI
+        fetch('http://127.0.0.1:8000/session/delete?id_member=' + cookie, {
+          method: 'DELETE',
+          redirect: "manual"
+        })
+          .then((response) => {
+            if (response.type == "opaqueredirect") {
+                window.location.replace("http://127.0.0.1:5173/")
+            } else {
+              // Gérer l'échec de la déconnexion
+              console.error('La déconnexion a échoué.');
+            }
+          })
+          .catch((error) => {
+            // Gérer les erreurs de requête
+            console.error('Erreur de déconnexion :', error);
+          });
+      };
+      
+
     return (
         <nav className="fixed w-full z-10 border-b border-black px-20">
             <div className="flex items-center py-2">
@@ -38,7 +61,7 @@ function NavBar() {
                         <Link to="/" className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-gray-700 hover:text-white py-2">Accueil</Link>
                         <Link to="/portfolios" className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-gray-700 hover:text-white py-2">Portfolios</Link>
                         <Link to={`/profil/${cookie}`} className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-gray-700 hover:text-white py-2">Profil</Link>
-                        <Link to="/connexion" className="transition delay-75 md:text-xl text-white md:px-4 bg-black hover:bg-gray-700 hover:text-white py-2">Deconnexion</Link>
+                        <button onClick={handleDeconnexion} className="transition delay-75 md:text-xl text-white md:px-4 bg-black hover:bg-gray-700 hover:text-white py-2">Déconnexion</button>
                     </div>
                 }
                 {connected == false &&
