@@ -1,7 +1,7 @@
 function api_verif_session() {
 
-    const getVerifSession = () => {
-        return fetch('http://127.0.0.1:8000/session/', {
+    const getVerifSession = (id) => {
+        return fetch('http://127.0.0.1:8000/session/?id_member='+id, {
             method: 'GET',
             credentials: "include",
         })

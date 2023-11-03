@@ -19,7 +19,7 @@ function Profil() {
     const [connected, setConnedted] = useState();
 
     useEffect(() => {
-        api_verif_session.getVerifSession().then((json) => {
+        api_verif_session.getVerifSession(profil).then((json) => {
             console.log(json);
             console.log(json.status);
             if (json.status != 200) {
@@ -31,8 +31,7 @@ function Profil() {
         })
             .catch((error) => {
                 console.error(error);
-            })
-            ;
+        });
         api_get_network_by_id.getNetworkById(profil).then((json) => {
             setNetwork(json);
         });
