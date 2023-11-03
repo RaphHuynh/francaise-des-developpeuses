@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import api_login from "./api/api_login";
 import NavBar from "./NavBar";
 import logo from "./../assets/logo-no-background.svg";
 

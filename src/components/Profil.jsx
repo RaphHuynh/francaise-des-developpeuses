@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { redirect, useParams } from "react-router-dom";
+import { useParams, Link,useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-import { Link } from "react-router-dom";
 import api_profil from "./api/api_get_member_by_id";
 import api_get_network_by_id from "./api/api_get_network_by_id";
 import api_get_category_by_member_id from "./api/api_get_category_by_member_id";
@@ -16,17 +15,19 @@ function Profil() {
     const [categories, setCategory] = useState([]);
     const { profil } = useParams();
     const [imageUrl, setImageUrl] = useState(null); // Ajoutez un état pour stocker l'URL de l'image
-    const [connected, setConnedted] = useState();
+    const [connected, setConnected] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         api_verif_session.getVerifSession(profil).then((json) => {
             console.log(json);
             console.log(json.status);
             if (json.status != 200) {
-                setConnedted(false);
+                setConnected(false);
+                navigate("/connexion");
             }
             else {
-                setConnedted(true);
+                setConnected(true);
             }
         })
             .catch((error) => {
@@ -54,7 +55,7 @@ function Profil() {
             };
             img.src = imageUrl;
         });
-    }, []);
+    }, [profil, navigate]);
 
     return (
         <main>
@@ -130,7 +131,6 @@ function Profil() {
                     </section>
                 </>
             }
-            {connected == false && <h1>Test</h1>}
         </main>
     )
 }
