@@ -35,22 +35,22 @@ function NavBar() {
         // Effectuer la requête de déconnexion vers l'endpoint FastAPI
         fetch('http://127.0.0.1:8000/session/delete?id_member=' + cookie, {
           method: 'DELETE',
+          credentials: 'include',  // Ajouter cette ligne pour inclure les cookies
           redirect: "manual"
         })
-          .then((response) => {
-            if (response.type == "opaqueredirect") {
-                window.location.replace("http://127.0.0.1:5173/")
-            } else {
-              // Gérer l'échec de la déconnexion
-              console.error('La déconnexion a échoué.');
-            }
-          })
-          .catch((error) => {
-            // Gérer les erreurs de requête
-            console.error('Erreur de déconnexion :', error);
-          });
-      };
-      
+        .then((response) => {
+          if (response.type === "opaqueredirect") {
+            window.location.replace("http://127.0.0.1:5173/");
+          } else {
+            // Gérer l'échec de la déconnexion
+            console.error('La déconnexion a échoué.');
+          }
+        })
+        .catch((error) => {
+          // Gérer les erreurs de requête
+          console.error('Erreur de déconnexion :', error);
+        });
+      };      
 
     return (
         <nav className="fixed w-full z-10 border-b border-black px-20">

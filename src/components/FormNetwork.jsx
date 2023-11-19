@@ -7,12 +7,10 @@ function FormNetwork() {
   const [networks, setNetworks] = useState([]);
   const [formData, setFormData] = useState([]);
   const [message, setMessage] = useState("");
-
   const [networksOfUser, setNetworksOfUser] = useState([]);
   const [selectedNetworks, setSelectedNetworks] = useState([]);
   const [deleteMessage, setDeleteMessage] = useState('');
   const [connected, setConnected] = useState();
-
   const { profil } = useParams();
   const navigate = useNavigate();
 
@@ -25,7 +23,9 @@ function FormNetwork() {
   };
 
   const fetchNetworks = () => {
-    fetch("http://127.0.0.1:8000/network")
+    fetch("http://127.0.0.1:8000/network", {
+      credentials: 'include',
+    })
       .then((response) => response.json())
       .then((data) => {
         setNetworks(data);
@@ -40,22 +40,24 @@ function FormNetwork() {
     api_verif_session.getVerifSession(profil).then((json) => {
       console.log(json);
       console.log(json.status);
-      if (json.status != 200) {
+      if (json.status !== 200) {
         setConnected(false);
         navigate("/connexion");
-      }
-      else {
+      } else {
         setConnected(true);
       }
     })
       .catch((error) => {
         console.error(error);
       });
+
     fetchNetworks();
   }, [profil, navigate]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/member/network/' + profil)
+    fetch(`http://127.0.0.1:8000/member/network/${profil}`, {
+      credentials: 'include',
+    })
       .then((response) => response.json())
       .then((data) => {
         setNetworksOfUser(data);
@@ -74,8 +76,6 @@ function FormNetwork() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Filtrer les entrées qui sont vides ou nulles
     const filteredFormData = formData.filter((data) => data.url && data.url.trim() !== '');
 
     const json = {
@@ -84,35 +84,39 @@ function FormNetwork() {
       url: filteredFormData.map((data) => data.url.trim()),
     };
 
-    fetch("http://127.0.0.1:8000/member/network", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(json),
-    })
-      .then(async (response) => {
-        if (response.status === 201) {
-          setMessage("Mise à jour réussie.");
-          // Réinitialiser les formulaires après la soumission
-          setFormData(networks.map((network) => ({ id_member: profil, id_network: network.id, url: null })));
-          setSelectedNetworks([]);
-          // Rafraîchir la liste des réseaux sociaux en appelant la fonction fetchNetworks
-          fetch('http://127.0.0.1:8000/member/network/' + profil)
-            .then((response) => response.json())
-            .then((data) => {
-              setNetworksOfUser(data);
-            })
-            .catch((error) => {
-              console.error('Erreur lors de la récupération des réseaux sociaux:', error);
-            });
-        } else {
-          setMessage("Erreur lors de la mise à jour.");
-        }
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la mise à jour:", error);
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/member/network", {
+        method: "POST",
+        headers: headers,
+        credentials: 'include',
+        body: JSON.stringify(json),
       });
+
+      if (response.status === 201) {
+        setMessage("Mise à jour réussie.");
+        setFormData(networks.map((network) => ({ id_member: profil, id_network: network.id, url: null })));
+        setSelectedNetworks([]);
+
+        fetch(`http://127.0.0.1:8000/member/network/${profil}`, {
+          credentials: 'include',
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            setNetworksOfUser(data);
+          })
+          .catch((error) => {
+            console.error('Erreur lors de la récupération des réseaux sociaux:', error);
+          });
+      } else {
+        setMessage("Erreur lors de la mise à jour.");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour:", error);
+    }
   };
 
   const deleteCheckboxChange = (event) => {
@@ -137,15 +141,17 @@ function FormNetwork() {
           id_member: profil,
           id_network: selectedNetworks,
         }),
+        credentials: 'include',
       });
 
       if (response.status === 200) {
         setDeleteMessage('Réseaux sociaux supprimés avec succès !');
-        // Réinitialiser la liste après la soumission
         setSelectedNetworks([]);
-        // Rafraîchir les listes en rechargeant les données
+
         fetchNetworks();
-        fetch('http://127.0.0.1:8000/member/network/' + profil)
+        fetch(`http://127.0.0.1:8000/member/network/${profil}`, {
+          credentials: 'include',
+        })
           .then((response) => response.json())
           .then((data) => {
             setNetworksOfUser(data);
@@ -164,7 +170,7 @@ function FormNetwork() {
 
   return (
     <>
-      {connected == true &&
+      {connected === true &&
         <>
           <NavBar />
           <section className="flex flex-col w-full px-5 md:px-20 pt-28">
@@ -242,3 +248,4 @@ function FormNetwork() {
 }
 
 export default FormNetwork;
+

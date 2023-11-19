@@ -27,11 +27,10 @@ function FormCategory() {
     api_verif_session.getVerifSession(profil).then((json) => {
       console.log(json);
       console.log(json.status);
-      if (json.status != 200) {
+      if (json.status !== 200) {
         setConnected(false);
         navigate("/connexion");
-      }
-      else {
+      } else {
         setConnected(true);
       }
     })
@@ -41,7 +40,10 @@ function FormCategory() {
   }, [profil, navigate]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/category')
+    fetch('http://127.0.0.1:8000/category', {
+      method: 'GET',
+      credentials: 'include', // Ajout des credentials
+    })
       .then((response) => response.json())
       .then((data) => {
         const categoriesToDisplay = data.filter((category) => {
@@ -55,7 +57,10 @@ function FormCategory() {
   }, [categoriesOfUser]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/member/category/' + profil)
+    fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
+      method: 'GET',
+      credentials: 'include', // Ajout des credentials
+    })
       .then((response) => response.json())
       .then((data) => {
         setCategoriesOfUser(data);
@@ -63,7 +68,7 @@ function FormCategory() {
       .catch((error) => {
         console.error('Erreur lors de la récupération des catégories:', error);
       });
-  }, []);
+  }, [profil]);
 
   const handleCheckboxChange = (event) => {
     const categoryId = parseInt(event.target.value);
@@ -96,6 +101,7 @@ function FormCategory() {
           id_member: profil,
           id_category: selectedCategories,
         }),
+        credentials: 'include', // Ajout des credentials
       });
 
       if (response.status === 201) {
@@ -107,7 +113,10 @@ function FormCategory() {
         setSelectedCategoriesOfUser([]);
         // Rafraîchir les listes en rechargeant les données
         fetchCategories();
-        fetch('http://127.0.0.1:8000/member/category/' + profil)
+        fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
+          method: 'GET',
+          credentials: 'include', // Ajout des credentials
+        })
           .then((response) => response.json())
           .then((data) => {
             setCategoriesOfUser(data);
@@ -137,6 +146,7 @@ function FormCategory() {
           id_member: profil,
           id_category: selectedCategoriesOfUser,
         }),
+        credentials: 'include', // Ajout des credentials
       });
 
       if (response.status === 200) {
@@ -148,7 +158,10 @@ function FormCategory() {
         setSelectedCategoriesOfUser([]);
         // Rafraîchir les listes en rechargeant les données
         fetchCategories();
-        fetch('http://127.0.0.1:8000/member/category/' + profil)
+        fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
+          method: 'GET',
+          credentials: 'include', // Ajout des credentials
+        })
           .then((response) => response.json())
           .then((data) => {
             setCategoriesOfUser(data);
@@ -166,7 +179,10 @@ function FormCategory() {
   };
 
   const fetchCategories = () => {
-    fetch('http://127.0.0.1:8000/category')
+    fetch('http://127.0.0.1:8000/category', {
+      method: 'GET',
+      credentials: 'include', // Ajout des credentials
+    })
       .then((response) => response.json())
       .then((data) => {
         const categoriesToDisplay = data.filter((category) => {
