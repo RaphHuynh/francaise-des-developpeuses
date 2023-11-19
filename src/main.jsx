@@ -13,6 +13,10 @@ import Connexion from "./components/Connexion"
 import FromProfil from "./components/FormProfil";
 import FromCategory from "./components/FormCategory";
 import FromNetwork from "./components/FormNetwork";
+import Admin from "./components/Admin";
+import AdminProfils from "./components/AdminProfils";
+import AdminCategory from "./components/AdminCategory";
+import AdminNetwork from "./components/AdminNetwork";
 
 const router = createBrowserRouter([
   {
@@ -46,9 +50,24 @@ const router = createBrowserRouter([
   {
     path:"/profil/:profil/edit/category",
     element: <FromCategory/>
+  },
+  {
+    path:"/admin",
+    element: <Admin/>
+  },
+  {
+    path:"/admin/profils",
+    element: <AdminProfils/>
+  },
+  {
+    path:"/admin/category",
+    element: <AdminCategory/>
+  },
+  {
+    path:"/admin/network",
+    element: <AdminNetwork/>
   }
 ]);
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router}/>
