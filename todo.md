@@ -39,9 +39,9 @@
 - [ ] Page for Admin :
   - [X] Home
     - [X] Design
-  - [ ] Manage Categories
-    - [ ] Design
-    - [ ] call api
+  - [X] Manage Categories
+    - [X] Design
+    - [X] call api
   - [ ] Manage Networks
     - [ ] Design
     - [ ] call api
@@ -53,7 +53,7 @@
   - [X] to visitor
   - [x] to member
   - [ ] to admin
-  - [ ] design
+  - [X] design
 - [ ] Credits  
 
 # v.1.2
@@ -74,3 +74,8 @@
   - [ ] Projets
     - [ ] Design
     - [ ] Call api
+
+# v.3
+- [ ] Page to share project with todo-list:
+  - [ ] design
+  - [ ] call api
