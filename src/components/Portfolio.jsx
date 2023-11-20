@@ -48,7 +48,7 @@ function Portfolio(){
                     <article className="flex flex-col md:flex-row gap-8">
                         <article className="md:w-1/2">
                             <h1 className="text-4xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Categories</h1>
-                            <div className="flex gap-4">
+                            <div className="grid grid-cols-7 gap-4 w-fit">
                                 {categories.map((category) => (
                                 <>
                                     <span className="md:text-xl border-2 border-black rounded-sm px-2 py-1">{category.name}</span>
@@ -60,7 +60,7 @@ function Portfolio(){
                         </article>
                         <aside className="md:w-1/2">
                             <h1 className="text-4xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Network</h1>
-                            <div className="flex gap-4">
+                            <div className="grid grid-cols-7 gap-4 w-fit">
                             {networks.map((network) => (
                                 <>
                                     {network.name == "github" && <a href={network.url} target="_blank"><img src={github} height={50} width={50} className="transition delay-75 hover:scale-125"></img></a>}
