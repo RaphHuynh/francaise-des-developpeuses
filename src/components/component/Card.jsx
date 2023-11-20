@@ -9,6 +9,9 @@ function Card({ currentPage, updateTotalPages }) {
         api.getMembers().then((json) => {
             setMembers(json);
 
+            // Consoler les données pour vérification
+            console.log(json);
+
             // Calculer le nombre total de pages en fonction du nombre de profils
             const total = Math.ceil(json.length / profilesPerPage);
             updateTotalPages(total);
@@ -27,7 +30,14 @@ function Card({ currentPage, updateTotalPages }) {
                     <img src={"http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=" + member.id_member} alt={member.username} className="object-cover w-full h-56 hover:contrast-125 duration-200"></img>
                     <aside className="pt-2 md:p-2 md:h-1/3">
                         <h1 className="uppercase text-beige bg-black py-1 px-1 mb-2 w-min">{member.username}</h1>
-                        <p className="text-right">{member.category_name}</p>
+                        {member.category_name && (
+                            <div className="w-full flex justify-end">
+                                <p>
+                                {member.category_name.split(',').slice(0, 3).join(', ')}
+                                {member.category_name.split(',').length > 3 && " ..."}
+                                </p>
+                            </div>
+                        )}
                     </aside>
                 </Link>
             ))}
@@ -36,3 +46,4 @@ function Card({ currentPage, updateTotalPages }) {
 }
 
 export default Card;
+
