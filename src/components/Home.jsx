@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import About from "./component/About";
 import RandomProfil from "./component/RandomProfil";
@@ -8,9 +9,17 @@ function Home(){
     return (
         <main>
             <NavBar/>
-            <section className="w-full min-h-screen px-5 md:px-20 md:py-32 pt-32 pb-10">
+            <section className="h-screen w-full flex flex-col justify-center px-5 md:px-20 md:py-32 pt-32 pb-10">
+                <h1 className="text-9xl uppercase bg-black text-beige w-fit py-5 px-4">Françaises Des</h1>
+                <h1 className="text-9xl mr-0 ml-auto uppercase bg-black text-beige w-fit py-5 px-4 mb-10">Développeuses</h1>
+                <div className="w-full flex justify-center gap-4">
+                    <Link to='/portfolios' className="text-3xl uppercase border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">Voir les portfolios</Link>
+                    <a href="#About" className="text-3xl uppercase border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">A propos</a>
+                    <a href="#About" className="text-3xl uppercase border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">Comment s'inscrire ?</a>
+                </div>
+            </section>
+            <section className="w-full min-h-screen px-5 md:px-20 md:py-32 pt-32 pb-10" id="About">
                 <article className="w-full">
-                    <h1 className="text-4xl md:text-6xl lg:text-9xl text-center mb-10 tracking-tighter uppercase pb-10 border-b">Française des développeuses</h1>
                     <section className="md:grid md:grid-cols-2 md:gap-10 border-b pb-5 md:pb-10">
                         <aside className="pb-5 md:pb-0">
                             <h1 className="text-xl md:text-4xl lg:text-6xl mb-10 uppercase bg-black text-beige text-center">Bienvenue</h1>

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    scroll-behavior: smooth;
+}
+
 @font-face {
     font-family: "satochi-text";
     src: url(./fonts/Satoshi-Regular.otf) format("opentype");
