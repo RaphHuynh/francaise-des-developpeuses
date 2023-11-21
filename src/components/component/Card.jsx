@@ -9,16 +9,13 @@ function Card({ currentPage, updateTotalPages }) {
         api.getMembers().then((json) => {
             setMembers(json);
 
-            // Consoler les données pour vérification
             console.log(json);
 
-            // Calculer le nombre total de pages en fonction du nombre de profils
             const total = Math.ceil(json.length / profilesPerPage);
             updateTotalPages(total);
         });
     }, [updateTotalPages]);
 
-    // Calculer l'index de début et de fin pour les profils sur la page actuelle
     const indexOfLastProfile = currentPage * profilesPerPage;
     const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;
     const currentProfiles = members.slice(indexOfFirstProfile, indexOfLastProfile);

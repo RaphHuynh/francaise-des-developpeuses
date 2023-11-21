@@ -14,7 +14,7 @@ function Profil() {
     const [networks, setNetwork] = useState([]);
     const [categories, setCategory] = useState([]);
     const { profil } = useParams();
-    const [imageUrl, setImageUrl] = useState(null); // Ajoutez un état pour stocker l'URL de l'image
+    const [imageUrl, setImageUrl] = useState(null);
     const [connected, setConnected] = useState();
     const navigate = useNavigate();
 
@@ -44,13 +44,11 @@ function Profil() {
 
             const imageUrl = `http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=${profil}`;
 
-            // Attendre que l'image soit chargée avant de la définir
             const img = new Image();
             img.onload = () => {
                 setImageUrl(imageUrl);
             };
             img.onerror = () => {
-                // En cas d'erreur de chargement de l'image, définir imageUrl sur null ou l'image par défaut
                 setImageUrl(defaut);
             };
             img.src = imageUrl;

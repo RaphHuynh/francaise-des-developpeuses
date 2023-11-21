@@ -10,7 +10,6 @@ function Connexion(){
             redirect: "manual"
         }).then(response => {
             if (response.type == "opaqueredirect"){  
-                // To make sure the fetch is with redirect response return. 
                 console.log(response); 
                     const scope="user%3Aemail";
                     window.location.replace("https://github.com/login/oauth/authorize?response_type=code&client_id=f494318165ec1a0f6937&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Fgithub%2Fcallback&scope="+{scope}); // create one and only one request

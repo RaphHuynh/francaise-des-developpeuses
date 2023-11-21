@@ -74,7 +74,7 @@ function AdminCategory() {
         };
     
         fetchCategories();
-    }, [forceUpdate]); // Mettre à jour la liste uniquement lorsque forceUpdate change
+    }, [forceUpdate]);
 
     return (
         <>

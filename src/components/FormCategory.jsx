@@ -42,7 +42,7 @@ function FormCategory() {
   useEffect(() => {
     fetch('http://127.0.0.1:8000/category', {
       method: 'GET',
-      credentials: 'include', // Ajout des credentials
+      credentials: 'include',
     })
       .then((response) => response.json())
       .then((data) => {
@@ -59,7 +59,7 @@ function FormCategory() {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
       method: 'GET',
-      credentials: 'include', // Ajout des credentials
+      credentials: 'include',
     })
       .then((response) => response.json())
       .then((data) => {
@@ -101,21 +101,19 @@ function FormCategory() {
           id_member: profil,
           id_category: selectedCategories,
         }),
-        credentials: 'include', // Ajout des credentials
+        credentials: 'include',
       });
 
       if (response.status === 201) {
         setMessage('Catégories ajoutées avec succès !');
-        // Réinitialiser les listes après la soumission
         setCategories([]);
         setCategoriesOfUser([]);
         setSelectedCategories([]);
         setSelectedCategoriesOfUser([]);
-        // Rafraîchir les listes en rechargeant les données
         fetchCategories();
         fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
           method: 'GET',
-          credentials: 'include', // Ajout des credentials
+          credentials: 'include',
         })
           .then((response) => response.json())
           .then((data) => {
@@ -146,21 +144,19 @@ function FormCategory() {
           id_member: profil,
           id_category: selectedCategoriesOfUser,
         }),
-        credentials: 'include', // Ajout des credentials
+        credentials: 'include',
       });
 
       if (response.status === 200) {
         setDeleteMessage('Catégories supprimées avec succès !');
-        // Réinitialiser les listes après la soumission
         setCategories([]);
         setCategoriesOfUser([]);
         setSelectedCategories([]);
         setSelectedCategoriesOfUser([]);
-        // Rafraîchir les listes en rechargeant les données
         fetchCategories();
         fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
           method: 'GET',
-          credentials: 'include', // Ajout des credentials
+          credentials: 'include',
         })
           .then((response) => response.json())
           .then((data) => {
@@ -181,7 +177,7 @@ function FormCategory() {
   const fetchCategories = () => {
     fetch('http://127.0.0.1:8000/category', {
       method: 'GET',
-      credentials: 'include', // Ajout des credentials
+      credentials: 'include',
     })
       .then((response) => response.json())
       .then((data) => {

@@ -4,13 +4,13 @@ import Card from "./component/Card";
 
 function Portfolios() {
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1); // Mise à jour du nombre total de pages
+    const [totalPages, setTotalPages] = useState(1);
 
     const handlePageChange = (newPage) => {
         if (newPage >= 1 && newPage <= totalPages) {
             setCurrentPage(newPage);
         } else if (newPage > totalPages) {
-            setCurrentPage(1); // Revenir à la première page si on atteint la dernière.
+            setCurrentPage(1);
         }
     };
 
@@ -26,7 +26,6 @@ function Portfolios() {
                     <article className="flex items-center justify-center w-full">
                         <Card
                             currentPage={currentPage}
-                            // Mise à jour du nombre total de pages
                             updateTotalPages={(total) => setTotalPages(total)}
                         />
                     </article>
