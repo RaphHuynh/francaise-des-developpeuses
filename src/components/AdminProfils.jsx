@@ -16,10 +16,9 @@ function AdminProfils() {
                 const isAdminResponse = await api_is_admin.getVerifAdmin();
                 setIsAdmin(isAdminResponse);
             } catch (error) {
-                console.log("Erreur.");
+                setIsAdmin(false);
             }
         };
-
         fetchData();
     }, []);
 
@@ -125,7 +124,7 @@ function AdminProfils() {
                     </article>
                 </section>
             }
-            {isAdmin != true &&
+            {isAdmin == false &&
                 <section className="flex w-full min-h-screen px-5 md:px-20 pt-20 pb-10 md:py-20 gap-4 justify-center">
                     <img src={kappa} className="w-1/2"></img>
                 </section>

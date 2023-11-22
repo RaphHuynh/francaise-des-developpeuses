@@ -57,9 +57,9 @@ function Profil() {
 
     return (
         <main>
+            <>
+            <NavBar />
             {connected == true &&
-                <>
-                    <NavBar />
                     <section className="flex flex-col w-full px-5 md:px-20 pt-20">
                         <article className="w-full grid grid-cols-2 border-b pb-10 items-center">
                             <h1 className="text-2xl lg:text-4xl xl:text-6xl uppercase">
@@ -127,8 +127,8 @@ function Profil() {
                             </article>
                         </section>
                     </section>
-                </>
             }
+            </>
         </main>
     )
 }

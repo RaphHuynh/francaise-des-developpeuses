@@ -2,32 +2,51 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie';
 import api_verif_session from "./api/api_verif_session";
+import api_is_admin from "./api/api_is_admin";
 
 export default NavBar;
 
 function NavBar() {
-    const [connected, setConnected] = useState(false);
+    const storedConnected = localStorage.getItem("connected");
+    const [connected, setConnected] = useState(storedConnected === "true" ? true : storedConnected === "false" ? false : null);
     const cookie = Cookies.get("token_user");
+    const [isAdmin, setIsAdmin] = useState(storedConnected === "true" ? true : storedConnected === "false" ? false : null);
 
     useEffect(() => {
         try {
-            api_verif_session.getVerifSession(cookie).then(json => {
-                console.log(json);
-                if (json.status !== 200) {
-                    setConnected(false);
-                } else {
-                    setConnected(true);
-                }
-            }).catch(error => {
-                console.error(error);
-            });
+            api_verif_session.getVerifSession(cookie)
+                .then(json => {
+                    const newConnected = json.status === 200;
+                    if (newConnected !== connected) {
+                        setConnected(newConnected);
+                        localStorage.setItem("connected", newConnected);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
         } catch (e) {
             console.error('Error parsing cookie:', e);
         }
-    }, []);
+    }, [cookie, connected]);
 
-    // ...
+    if (connected === null) {
+        return null;
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const isAdminResponse = await api_is_admin.getVerifAdmin();
+                setIsAdmin(isAdminResponse);
+            } catch (error) {
+                console.log("Erreur.");
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleDeconnexion = () => {
         // Effectuer la requête de déconnexion vers l'endpoint FastAPI
@@ -57,6 +76,11 @@ function NavBar() {
                         <Link to="/" className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">Accueil</Link>
                         <Link to="/portfolios" className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">Portfolios</Link>
                         <Link to={`/profil/${cookie}`} className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">Profil</Link>
+                        {isAdmin == true && 
+                            <Link to="/admin" className="transition delay-75 md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">
+                                Admin
+                            </Link>
+                        }
                         <button onClick={handleDeconnexion} className="transition delay-75 md:text-xl text-white md:px-4 bg-black hover:bg-black/90 hover:text-white py-2">Déconnexion</button>
                     </div>
                 }

@@ -1,18 +1,22 @@
 function api_is_admin() {
 
     const getVerifAdmin = () => {
-        return fetch('http://127.0.0.1:8000/admin/', {
+        try {
+            return fetch('http://127.0.0.1:8000/admin/', {
             method: 'GET',
             credentials: "include",
-        })
-        .then(res => {
-            if (res.status === 200){
-                return true
-            }
-            else {
-                return false
-            }
-        });
+            })
+            .then(res => {
+                if (res.status === 200){
+                    return true
+                }
+                else if (res.status === 400){
+                    return false
+                }
+            });
+        } catch(error){
+            return false;
+        }
     };
 
     return {

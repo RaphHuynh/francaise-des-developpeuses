@@ -33,10 +33,10 @@
   - [X] Network members
     - [X] Design
     - [X] call api
-- [ ] Secure Front :
+- [X] Secure Front :
   - [X] with current user
-  - [ ] with admin
-- [ ] Page for Admin :
+  - [X] with admin
+- [X] Page for Admin :
   - [X] Home
     - [X] Design
   - [X] Manage Categories
@@ -45,14 +45,14 @@
   - [X] Manage Networks
     - [X] Design
     - [X] call api
-  - [ ] Manage all profiles
-    - [ ] Design
-    - [ ] call api
+  - [X] Manage all profiles
+    - [X] Design
+    - [X] call api
 - [ ] set up env to call api
-- [ ] NavBar :
+- [X] NavBar :
   - [X] to visitor
   - [x] to member
-  - [ ] to admin
+  - [X] to admin
   - [X] design
 - [ ] Credits  
 

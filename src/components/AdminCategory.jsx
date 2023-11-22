@@ -7,7 +7,7 @@ function AdminCategory() {
     const [categoryName, setCategoryName] = useState('');
     const [categories, setCategories] = useState([]);
     const [forceUpdate, setForceUpdate] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,7 +15,7 @@ function AdminCategory() {
                 const isAdminResponse = await api_is_admin.getVerifAdmin();
                 setIsAdmin(isAdminResponse);
             } catch (error) {
-                console.log("Erreur.");
+                setIsAdmin(false);
             }
         };
 
@@ -130,7 +130,7 @@ function AdminCategory() {
                     </article>
                 </section>
             }
-            {isAdmin != true &&
+            {isAdmin == false &&
                 <section className="flex w-full min-h-screen px-5 md:px-20 pt-20 pb-10 md:py-20 gap-4 justify-center">
                     <img src={kappa} className="w-1/2"></img>
                 </section>
