@@ -25,8 +25,6 @@ function FormCategory() {
 
   useEffect(() => {
     api_verif_session.getVerifSession(profil).then((json) => {
-      console.log(json);
-      console.log(json.status);
       if (json.status !== 200) {
         setConnected(false);
         navigate("/connexion");
