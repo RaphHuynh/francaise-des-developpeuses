@@ -42,9 +42,9 @@
   - [X] Manage Categories
     - [X] Design
     - [X] call api
-  - [ ] Manage Networks
-    - [ ] Design
-    - [ ] call api
+  - [X] Manage Networks
+    - [X] Design
+    - [X] call api
   - [ ] Manage all profiles
     - [ ] Design
     - [ ] call api

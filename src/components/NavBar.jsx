@@ -11,8 +11,6 @@ function NavBar() {
 
     useEffect(() => {
         try {
-            console.log(cookie);
-
             api_verif_session.getVerifSession(cookie).then(json => {
                 console.log(json);
                 if (json.status !== 200) {
