@@ -105,14 +105,14 @@ function AdminProfils() {
                         <aside className="flex flex-col py-2">
                             {members.map(member => (
                                 <>
-                                    <div className="flex w-full even:bg-black/10 py-2 px-4 items-center">
+                                    <div className="md:flex w-full even:bg-black/10 py-2 px-4 items-center">
                                         <details className="">
                                             <summary>
                                                 {member.firstname} {member.lastname} (#{member.username}) mail : {member.mail} url : {member.url_portfolio} validation : {member.date_activated} bannis : {member.date_deleted}
                                             </summary>
                                             {member.description}
                                         </details>
-                                        <div className="flex mr-0 ml-auto gap-4">
+                                        <div className="md:flex mr-0 ml-auto gap-4">
                                             {member.date_activated == null && <button className="bg-green-500 px-4 py-2 border-2 border-green-700 rounded-md" onClick={() => handleValidate(member.id)}>Valider</button>}
                                             {member.date_deleted == null && <button className="bg-red-500 border-2 border-red-700 px-4 py-2 rounded-md" onClick={() => handleDelete(member.id)}>Bannir</button>}
                                             {member.date_deleted != null && <button className="bg-blue-500 border-2 border-blue-700 px-4 py-2 rounded-md" onClick={() => handleUnban(member.id)}>Débannir</button>}

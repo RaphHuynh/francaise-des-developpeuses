@@ -10,13 +10,13 @@ function Home(){
     return (
         <main>
             <NavBar/>
-            <section className="h-screen w-full flex flex-col justify-center px-5 md:px-20 md:py-32 pt-32 pb-10">
-                <h1 className="text-9xl uppercase bg-black text-beige w-fit py-5 px-4">Française Des</h1>
-                <h1 className="text-9xl mr-0 ml-auto uppercase bg-black text-beige w-fit py-5 px-4 mb-10">Développeuses</h1>
-                <div className="w-full flex justify-center gap-4">
-                    <Link to='/portfolios' className="text-3xl uppercase border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">Voir les portfolios</Link>
-                    <a href="#About" className="text-3xl uppercase border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">A propos</a>
-                    <a href="#About" className="text-3xl uppercase border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">Comment s'inscrire ?</a>
+            <section className="h-screen w-full flex flex-col justify-center px-5 md:px-20 pt-20 pb-10">
+                <h1 className="text-3xl md:text-8xl lg:text-9xl uppercase bg-black text-beige w-fit py-3 px-2 md:py-5 md:px-4">Française Des</h1>
+                <h1 className="text-3xl md:text-8xl lg:text-9xl mr-0 ml-auto uppercase bg-black text-beige w-fit py-3 px-2 md:py-5 md:px-4 mb-10">Développeuses</h1>
+                <div className="md:w-full flex flex-col md:flex-row md:justify-center gap-2 md:gap-4">
+                    <Link to='/portfolios' className="text-xs md:text-2xl lg:text-3xl uppercase border-2 md:border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">Voir les portfolios</Link>
+                    <a href="#About" className="text-xs md:text-2xl lg:text-3xl uppercase border-2 md:border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">A propos</a>
+                    <a href="#About" className="text-xs md:text-2xl lg:text-3xl uppercase border-2 md:border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150">Comment s'inscrire ?</a>
                 </div>
             </section>
             <section className="w-full min-h-screen px-5 md:px-20 pt-32" id="About">

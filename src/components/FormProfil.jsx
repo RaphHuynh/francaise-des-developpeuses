@@ -118,17 +118,17 @@ function FromProfil() {
         <>
           <NavBar />
           <section className="flex flex-col w-full px-5 md:px-20 pt-28">
-            <article className="w-full grid grid-cols-2 border-b pb-10 items-center mb-10">
+            <article className="w-full md:grid grid-cols-2 border-b pb-10 items-center mb-10">
               <h1 className="text-2xl lg:text-4xl xl:text-6xl uppercase">
                 Détails du profil
               </h1>
-              <p className="text-sm lg:text-lg text-right">
+              <p className="text-sm lg:text-lg md:text-right">
                 Vous pouvez ajouter, modifier les informations concernant votre profil. Vous pouvez aussi rajouter un screen de votre portfolio. Si vous ne possédez pas de portfolio vous pouvez mettre un screen de votre profil Github / Linkedin / Gitlab ou d'un autre réseau de votre choix.
               </p>
             </article>
-            <section className="flex gap-4">
-              <article className="flex flex-col w-1/2">
-                <h1 className="text-4xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">
+            <section className="md:flex gap-4 pb-14 md:pb-0">
+              <article className="flex flex-col md:w-1/2">
+                <h1 className="text-2xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">
                   Modifier profil
                 </h1>
                 <form ref={form} onSubmit={submit} className="flex flex-col gap-2">
@@ -142,11 +142,11 @@ function FromProfil() {
                   <input type="mail" name="mail" defaultValue={user.mail} className="bg-transparent border-b border-black focus:border-slate-400 p-1 focus:ring-transparent focus:outline-none focus:placeholder:text-slate-400 placeholder:text-slate-500" placeholder="example@example.com" />
                   <label htmlFor="url_portfolio" className="uppercase">Url du portfolio :</label>
                   <input type="text" name="url_portfolio" defaultValue={user.url_portfolio} className="bg-transparent border-b border-black focus:border-slate-400 p-1 focus:ring-transparent focus:outline-none focus:placeholder:text-slate-400 placeholder:text-slate-500" placeholder="www.example.com" />
-                  <input type="submit" name="update_profil" value="Valider" className="hover:cursor-pointer uppercase py-4 px-3 bg-black text-beige hover:scale-105 transition delay-75 mt-4 w-full" />
+                  <input type="submit" name="update_profil" value="Valider" className="hover:cursor-pointer uppercase py-2 px-2 md:py-4 md:px-3 bg-black text-beige hover:scale-105 transition delay-75 mt-4 w-full" />
                 </form>
               </article>
-              <article className="flex flex-col w-1/2">
-                <h1 className="text-4xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Envoyer une image</h1>
+              <article className="flex flex-col md:w-1/2">
+                <h1 className="text-2xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Envoyer une image</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col">
                   {imageUrl ? (
                     <img src={imageUrl} className="transition delay-75 object-cover h-96 hover:contrast-125 border border-black" />
@@ -156,7 +156,7 @@ function FromProfil() {
                   <div className="flex justify-center w-full">
                     <input type="file" onChange={handleFileChange} accept="image/jpeg, image/png" className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:text-sm file:font-semibold file:text-black hover:scale-105 file:bg-transparent file:border-2 file:border-black mt-5 file:cursor-pointer flex justify-center" />
                   </div>
-                  <input type="submit" value="Envoyer" className="hover:cursor-pointer uppercase py-4 px-3 bg-black text-beige hover:scale-105 transition delay-75 mt-4 w-full" />
+                  <input type="submit" value="Envoyer" className="hover:cursor-pointer uppercase py-2 px-2 md:py-4 md:px-3 bg-black text-beige hover:scale-105 transition delay-75 mt-4 w-full" />
                 </form>
               </article>
             </section>

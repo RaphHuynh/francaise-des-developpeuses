@@ -21,7 +21,7 @@ function Card({ currentPage, updateTotalPages }) {
     const currentProfiles = members.slice(indexOfFirstProfile, indexOfLastProfile);
 
     return (
-        <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
+        <article className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
             {currentProfiles.map((member) => (
                 <Link to={`${member.id_member}`} key={member.id_member} className="transition delay-75 border h-min hover:scale-105 duration-50">
                     <img src={"http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=" + member.id_member} alt={member.username} className="object-cover w-full h-56 hover:contrast-125 duration-200"></img>

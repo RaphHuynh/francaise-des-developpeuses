@@ -203,12 +203,12 @@ function FormCategory() {
                 Vous pouvez sélectionner des catégories ou retirer des catégories sur cette page.
               </p>
             </article>
-            <article className="w-full pt-12 gap-4 flex">
-              <form onSubmit={handleSubmit} className="w-1/2">
+            <article className="w-full pt-12 gap-4 md:flex">
+              <form onSubmit={handleSubmit} className="md:w-1/2">
                 <h1 className="text-4xl md:text-4xl text-beige bg-black uppercase py-1 px-1 top-0">Sélectionnez les catégories :</h1>
                 <div className="flex flex-wrap gap-4 py-10">
                   {categories.map((category) => (
-                    <label key={category.id} className="border-2 border-black w-32 text-center cursor-pointer hover:scale-110 transition delay-75">
+                    <label key={category.id} className="border-2 border-black md:w-32 text-center cursor-pointer hover:scale-110 transition delay-75">
                       <input
                         type="checkbox"
                         value={category.id}
@@ -233,11 +233,11 @@ function FormCategory() {
                   )}
                 </p>
               </form>
-              <form onSubmit={deleteSubmit} className="w-1/2">
+              <form onSubmit={deleteSubmit} className="md:w-1/2 pb-10 md:pb-0">
                 <h1 className="text-4xl md:text-4xl text-beige bg-black uppercase py-1 px-1 top-0">Supprimer des catégories :</h1>
                 <div className="flex flex-wrap gap-4 py-10">
                   {categoriesOfUser.map((category) => (
-                    <label key={category.id_category} className={`border-2 border-black w-32 text-center cursor-pointer hover:scale-110 transition delay-75 ${selectedCategoriesOfUser.includes(category.id_category) ? 'bg-black text-beige' : ' text-black'}`}>
+                    <label key={category.id_category} className={`border-2 border-black md:w-32 text-center cursor-pointer hover:scale-110 transition delay-75 ${selectedCategoriesOfUser.includes(category.id_category) ? 'bg-black text-beige' : ' text-black'}`}>
                       <input
                         type="checkbox"
                         value={category.id_category}

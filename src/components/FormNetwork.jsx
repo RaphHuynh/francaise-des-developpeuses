@@ -182,8 +182,8 @@ function FormNetwork() {
                 Vous pouvez ajouter, modifier les liens de vos réseaux sociaux ainsi que les retirer.
               </p>
             </article>
-            <article className="w-full flex gap-4 mt-10">
-              <form onSubmit={handleSubmit} className="w-1/2">
+            <article className="w-full md:flex gap-4 mt-10">
+              <form onSubmit={handleSubmit} className="md:w-1/2">
                 <h1 className="text-4xl md:text-4xl text-beige bg-black uppercase py-1 px-1 top-0 mb-10">Ajouter ou modifier</h1>
                 {networks.map((network, index) => (
                   <div key={network.id_network} className="flex flex-col mb-2">
@@ -210,7 +210,7 @@ function FormNetwork() {
                   )}
                 </p>
               </form>
-              <form onSubmit={deleteSubmit} className="w-1/2">
+              <form onSubmit={deleteSubmit} className="md:w-1/2 pb-10 md:pb-0">
                 <h1 className="text-4xl md:text-4xl text-beige bg-black uppercase py-1 px-1 top-0 mb-4">Supprimer</h1>
                 <div className="flex flex-wrap gap-4">
                   {networksOfUser.map((network) => (
