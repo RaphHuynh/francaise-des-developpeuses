@@ -23,11 +23,11 @@ function Connexion(){
     return (
         <>
             <NavBar/>
-            <section className="md:flex items-center justify-center w-full pt-10 h-screen gap-4">
-                <article className="md:w-3/6 h-screen p-10 flex items-center w-full">
+            <section className="flex flex-col-reverse xl:flex-row items-center justify-center w-full pt-10 h-screen gap-4">
+                <article className="xl:w-3/6 h-screen p-10 flex items-center justify-center w-full">
                     <img src={logo} className="h-full"></img>
                 </article>
-                <article className="flex flex-col h-screen md:w-3/6 w-full bg-black pt-14">
+                <article className="flex flex-col h-screen xl:w-3/6 w-full bg-black pt-14">
                     <h1 className="text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] 2xl:text-[7rem] text-beige uppercase text-center ">Connexion</h1>
                     <button onClick={githubLogin} className="flex items-center gap-2 text-4xl uppercase text-beige my-10 mx-5 md:mx-16 justify-center border-2 border-[#F7F4E9] py-2 rounded-full hover:bg-[#F7F4E9] hover:text-black transition delay-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-github" viewBox="0 0 16 16">

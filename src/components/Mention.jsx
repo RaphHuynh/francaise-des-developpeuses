@@ -8,9 +8,8 @@ function Mention() {
                 <h1 className="text-xl md:text-4xl lg:text-6xl mb-10 uppercase bg-black text-beige text-center">
                     Mentions légales
                 </h1>
-
-                <article className="md:flex w-full gap-5 md:text-justify">
-                    <aside className="md:w-1/2 gap-4 flex flex-col">
+                <article className="xl:flex w-full gap-5 md:text-justify pb-10">
+                    <aside className="xl:w-1/2 gap-4 flex flex-col">
                         <h2 className="text-xl uppercase font-bold">1. Informations sur l'éditeur :</h2>
                         <p>Nom de l'administrateur : RaynhCoding</p>
                         <p>Adresse postale : <a href={"http://bento.me/raynhcoding"} className="text-gray-700 underline">Lien bento</a></p>
@@ -30,7 +29,7 @@ function Mention() {
                             Le logiciel est fourni "tel quel", sans garantie d'aucune sorte, expresse ou implicite, y compris, mais sans s'y limiter, les garanties de qualité marchande, d'adéquation à un usage particulier et d'absence de contrefaçon. En aucun cas, les auteurs ou les détenteurs des droits d'auteur ne seront responsables de toute réclamation, dommage ou autre responsabilité, que ce soit dans le cadre d'un contrat, d'un délit ou autre, découlant de ou en lien avec le logiciel ou l'utilisation ou d'autres transactions dans le logiciel.
                         </p>
                     </aside>
-                    <aside className="md:w-1/2 gap-4 flex flex-col">
+                    <aside className="xl:w-1/2 gap-4 flex flex-col">
                         <h2 className="text-xl uppercase font-bold">4. Politique de confidentialité :</h2>
                         <p>Nom prénom email : Seulement stockés, non exploités et non partagés.</p>
 

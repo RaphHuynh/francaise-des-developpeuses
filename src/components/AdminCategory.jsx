@@ -96,8 +96,8 @@ function AdminCategory() {
         <>
             <NavBar />
             {isAdmin == true &&
-                <section className="md:flex w-full min-h-screen px-5 md:px-20 pt-20 pb-10 md:py-20 gap-4">
-                    <article className="md:w-1/2">
+                <section className="xl:flex w-full min-h-screen px-5 md:px-20 pt-20 pb-10 md:py-20 gap-4">
+                    <article className="xl:w-1/2 xl:mb-0 mb-2">
                         <h1 className="text-2xl lg:text-4xl xl:text-6xl uppercase text-beige bg-black px-2 py-1 text-center">Créer une catégorie</h1>
                         <form onSubmit={handleFormSubmit} className="flex flex-col">
                             <label className="uppercase">
@@ -113,7 +113,7 @@ function AdminCategory() {
                             <button type="submit" className="border-2 border-black uppercase py-2 px-3 bg-black text-beige hover:scale-105 transition delay-75 mt-4 w-full">Ajouter la catégorie</button>
                         </form>
                     </article>
-                    <article className="md:w-1/2">
+                    <article className="xl:w-1/2">
                         <h1 className="text-2xl lg:text-4xl xl:text-6xl uppercase text-beige bg-black px-2 py-1 text-center">Effacer une catégorie</h1>
                         <div>
                             <h2>Liste des catégories :</h2>
