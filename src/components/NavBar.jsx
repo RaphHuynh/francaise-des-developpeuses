@@ -11,6 +11,7 @@ function NavBar() {
     const [connected, setConnected] = useState(storedConnected === "true" ? true : storedConnected === "false" ? false : null);
     const cookie = Cookies.get("token_user");
     const [isAdmin, setIsAdmin] = useState(storedConnected === "true" ? true : storedConnected === "false" ? false : null);
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         try {
@@ -50,7 +51,7 @@ function NavBar() {
 
     const handleDeconnexion = () => {
         // Effectuer la requête de déconnexion vers l'endpoint FastAPI
-        fetch('http://127.0.0.1:8000/session/delete?id_member=' + cookie, {
+        fetch(`${baseUrl}/session/delete?id_member=` + cookie, {
           method: 'DELETE',
           credentials: 'include',
           redirect: "manual"

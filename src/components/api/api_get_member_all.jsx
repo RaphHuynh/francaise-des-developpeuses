@@ -1,6 +1,8 @@
 function api() {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
     const getMembersAll = () => {
-        return fetch('http://127.0.0.1:8000/admin/member', {
+        return fetch(`${baseUrl}/admin/member`, {
             type: "GET",
             credentials: 'include',
         }).then((res) => res.json());

@@ -48,14 +48,14 @@
   - [X] Manage all profiles
     - [X] Design
     - [X] call api
-- [ ] set up env to call api
+- [X] set up env to call api
 - [X] NavBar :
   - [X] to visitor
   - [x] to member
   - [X] to admin
   - [X] design
 - [X] Credits / Mention légale  
-- [ ] Responsive
+- [X] Responsive
 
 # v.1.2
 

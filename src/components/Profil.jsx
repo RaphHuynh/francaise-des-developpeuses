@@ -17,6 +17,7 @@ function Profil() {
     const [imageUrl, setImageUrl] = useState(null);
     const [connected, setConnected] = useState();
     const navigate = useNavigate();
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         api_verif_session.getVerifSession(profil).then((json) => {
@@ -42,7 +43,7 @@ function Profil() {
         api_profil.getMemberById(profil).then((json) => {
             setResume(json);
 
-            const imageUrl = `http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=${profil}`;
+            const imageUrl = `${baseUrl}/member/image_portfolio_by_id?id_member=${profil}`;
 
             const img = new Image();
             img.onload = () => {

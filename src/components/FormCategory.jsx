@@ -11,6 +11,7 @@ function FormCategory() {
   const [selectedCategoriesOfUser, setSelectedCategoriesOfUser] = useState([]);
   const [deleteMessage, setDeleteMessage] = useState('');
   const [connected, setConnected] = useState();
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const { profil } = useParams();
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ function FormCategory() {
   }, [profil, navigate]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/category', {
+    fetch(`${baseUrl}/category`, {
       method: 'GET',
       credentials: 'include',
     })
@@ -55,7 +56,7 @@ function FormCategory() {
   }, [categoriesOfUser]);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
+    fetch(`${baseUrl}/member/category/${profil}`, {
       method: 'GET',
       credentials: 'include',
     })
@@ -90,7 +91,7 @@ function FormCategory() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/member/category', {
+      const response = await fetch(`${baseUrl}/member/category`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -133,7 +134,7 @@ function FormCategory() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/member/category', {
+      const response = await fetch(`${baseUrl}/member/category`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -152,7 +153,7 @@ function FormCategory() {
         setSelectedCategories([]);
         setSelectedCategoriesOfUser([]);
         fetchCategories();
-        fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
+        fetch(`${baseUrl}/member/category/${profil}`, {
           method: 'GET',
           credentials: 'include',
         })
@@ -173,7 +174,7 @@ function FormCategory() {
   };
 
   const fetchCategories = () => {
-    fetch('http://127.0.0.1:8000/category', {
+    fetch(`${baseUrl}/category`, {
       method: 'GET',
       credentials: 'include',
     })

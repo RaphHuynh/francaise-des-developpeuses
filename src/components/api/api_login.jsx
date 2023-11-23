@@ -1,6 +1,8 @@
 function login() {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
     const getLogin = () => {
-        return fetch("http://127.0.0.1:8000/github/login", {
+        return fetch(`${baseUrl}/github/login`, {
             method: "GET",
         }).then((res) => res.json());
     };

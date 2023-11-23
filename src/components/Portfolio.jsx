@@ -12,6 +12,7 @@ function Portfolio(){
     const [networks, setNetwork] = useState([]);
     const [categories, setCategory] = useState([]);
     const {portfolio} = useParams();
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() =>{
         api_get_network_by_id.getNetworkById(portfolio).then((json) =>{
@@ -41,7 +42,7 @@ function Portfolio(){
                             </article>
                         <figure className="lg:w-1/2">
                             <a href={resume.url_portfolio} target="_blank">
-                                <img src={"http://127.0.0.1:8000/member/image_portfolio_by_id?id_member="+portfolio} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
+                                <img src={`${baseUrl}/member/image_portfolio_by_id?id_member=`+portfolio} className="transition delay-75 object-cover h-full w-full hover:contrast-125 border border-black"></img>
                             </a>
                         </figure>
                     </article>

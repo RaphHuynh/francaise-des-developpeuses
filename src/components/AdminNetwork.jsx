@@ -8,6 +8,7 @@ function AdminNetwork() {
     const [networks, setNetworks] = useState([]);
     const [forceUpdate, setForceUpdate] = useState(false);
     const [isAdmin, setIsAdmin] = useState(null);
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,7 +27,7 @@ function AdminNetwork() {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/admin/network', {
+            const response = await fetch(`${baseUrl}/admin/network`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +52,7 @@ function AdminNetwork() {
 
     const handleDeleteCategory = async (name) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/admin/network?name=${name}`, {
+            const response = await fetch(`${baseUrl}/admin/network?name=${name}`, {
                 method: 'DELETE',
                 headers: {
                     'Cookie': document.cookie,
@@ -74,7 +75,7 @@ function AdminNetwork() {
     useEffect(() => {
         const fetchNetwork = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/network/');
+                const response = await fetch(`${baseUrl}/network/`);
 
                 if (response.ok) {
                     const data = await response.json();

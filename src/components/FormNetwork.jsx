@@ -13,6 +13,7 @@ function FormNetwork() {
   const [connected, setConnected] = useState();
   const { profil } = useParams();
   const navigate = useNavigate();
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const clearMessage = () => {
     setMessage('');
@@ -23,7 +24,7 @@ function FormNetwork() {
   };
 
   const fetchNetworks = () => {
-    fetch("http://127.0.0.1:8000/network", {
+    fetch(`${baseUrl}/network`, {
       credentials: 'include',
     })
       .then((response) => response.json())
@@ -55,7 +56,7 @@ function FormNetwork() {
   }, [profil, navigate]);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/member/network/${profil}`, {
+    fetch(`${baseUrl}/member/network/${profil}`, {
       credentials: 'include',
     })
       .then((response) => response.json())
@@ -89,7 +90,7 @@ function FormNetwork() {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/member/network", {
+      const response = await fetch(`${baseUrl}/member/network`, {
         method: "POST",
         headers: headers,
         credentials: 'include',
@@ -101,7 +102,7 @@ function FormNetwork() {
         setFormData(networks.map((network) => ({ id_member: profil, id_network: network.id, url: null })));
         setSelectedNetworks([]);
 
-        fetch(`http://127.0.0.1:8000/member/network/${profil}`, {
+        fetch(`${baseUrl}/member/network/${profil}`, {
           credentials: 'include',
         })
           .then((response) => response.json())
@@ -132,7 +133,7 @@ function FormNetwork() {
   const deleteSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:8000/member/network', {
+      const response = await fetch(`${baseUrl}/member/network`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -149,7 +150,7 @@ function FormNetwork() {
         setSelectedNetworks([]);
 
         fetchNetworks();
-        fetch(`http://127.0.0.1:8000/member/network/${profil}`, {
+        fetch(`${baseUrl}/member/network/${profil}`, {
           credentials: 'include',
         })
           .then((response) => response.json())

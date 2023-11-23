@@ -1,6 +1,8 @@
 function api_list_category() {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
     const getCategoryByIdMember = (id) => {
-      return fetch("http://127.0.0.1:8000/member/list_category/"+id, {
+      return fetch(`${baseUrl}/member/list_category/`+id, {
         type: "GET",
       }).then((res) => res.json());
     };
@@ -10,4 +12,4 @@ function api_list_category() {
     };
   }
   
-  export default api_list_category();
+export default api_list_category();

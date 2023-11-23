@@ -1,7 +1,8 @@
 function api_verif_session() {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     const getVerifSession = (id) => {
-        return fetch('http://127.0.0.1:8000/session/?id_member='+id, {
+        return fetch(`${baseUrl}/session/?id_member=`+id, {
             method: 'GET',
             credentials: "include",
         })

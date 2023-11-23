@@ -22,6 +22,7 @@ function FromProfil() {
   const [imageUrl, setImageUrl] = useState(null);
   const [connected, setConnected] = useState();
   const navigate = useNavigate();
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     api_verif_session.getVerifSession(id.profil).then((json) => {
@@ -47,7 +48,7 @@ function FromProfil() {
 
   const updateProfileImage = () => {
     const timestamp = new Date().getTime();
-    const imageUrl = `http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=${id.profil}&timestamp=${timestamp}`;
+    const imageUrl = `${baseUrl}/member/image_portfolio_by_id?id_member=${id.profil}&timestamp=${timestamp}`;
     setImageUrl(imageUrl);
   };
 
@@ -61,7 +62,7 @@ function FromProfil() {
       object[key] = value;
     });
 
-    fetch('http://127.0.0.1:8000/member', {
+    fetch(`${baseUrl}/member`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -95,7 +96,7 @@ function FromProfil() {
     formData.append('id_member', id.profil);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/member/image_portfolio?id_member=' + id.profil, {
+      const response = await fetch(`${baseUrl}/member/image_portfolio?id_member=` + id.profil, {
         method: 'PATCH',
         body: formData,
         credentials: 'include',

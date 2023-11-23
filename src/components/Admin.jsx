@@ -6,6 +6,7 @@ import kappa from "./../assets/kappa.png"
 
 function Admin() {
     const [isAdmin, setIsAdmin] = useState(null);
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const fetchData = async () => {

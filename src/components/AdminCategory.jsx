@@ -8,6 +8,7 @@ function AdminCategory() {
     const [categories, setCategories] = useState([]);
     const [forceUpdate, setForceUpdate] = useState(false);
     const [isAdmin, setIsAdmin] = useState(null);
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,7 +27,7 @@ function AdminCategory() {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/admin/category', {
+            const response = await fetch(`${baseUrl}/admin/category`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ function AdminCategory() {
 
     const handleDeleteCategory = async (name) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/admin/category?name=${name}`, {
+            const response = await fetch(`${baseUrl}/admin/category?name=${name}`, {
                 method: 'DELETE',
                 headers: {
                     'Cookie': document.cookie,
@@ -75,7 +76,7 @@ function AdminCategory() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/category/');
+                const response = await fetch(`${baseUrl}/category/`);
 
                 if (response.ok) {
                     const data = await response.json();

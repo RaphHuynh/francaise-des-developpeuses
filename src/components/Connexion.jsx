@@ -1,8 +1,9 @@
 import NavBar from "./NavBar";
 import logo from "./../assets/logo-no-background.svg";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 function Connexion(){
-    const url = "http://127.0.0.1:8000/github/login"
+    const url = `${baseUrl}/github/login`
 
     const githubLogin = () => {
         const response = fetch(url, {

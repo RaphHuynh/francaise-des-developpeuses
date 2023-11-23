@@ -9,6 +9,7 @@ function AdminProfils() {
     const [members, setMembers] = useState([]);
     const [forceUpdate, setForceUpdate] = useState(false);
     const [isAdmin, setIsAdmin] = useState(null);
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +33,7 @@ function AdminProfils() {
 
     const handleValidate = async (id) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/admin/member/validate?id_member=${id}`, {
+            const response = await fetch(`${baseUrl}/admin/member/validate?id_member=${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Cookie': document.cookie,
@@ -54,7 +55,7 @@ function AdminProfils() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/admin/member/ban/?id_member=${id}`, {
+            const response = await fetch(`${baseUrl}/admin/member/ban/?id_member=${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Cookie': document.cookie,
@@ -75,7 +76,7 @@ function AdminProfils() {
 
     const handleUnban = async (id) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/admin/member/unban/?id_member=${id}`, {
+            const response = await fetch(`${baseUrl}/admin/member/unban/?id_member=${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Cookie': document.cookie,

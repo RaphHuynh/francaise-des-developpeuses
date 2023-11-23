@@ -1,6 +1,8 @@
 function api_get_network_by_id() {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
     const getNetworkById = (id) => {
-        return fetch("http://127.0.0.1:8000/member/network/"+id, {
+        return fetch(`${baseUrl}/member/network/`+id, {
             type: "GET",
         }).then((res) => res.json());
     };

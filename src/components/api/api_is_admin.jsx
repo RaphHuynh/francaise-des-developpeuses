@@ -1,8 +1,9 @@
 function api_is_admin() {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
     const getVerifAdmin = () => {
         try {
-            return fetch('http://127.0.0.1:8000/admin/', {
+            return fetch(`${baseUrl}/admin/`, {
             method: 'GET',
             credentials: "include",
             })
