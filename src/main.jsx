@@ -17,6 +17,7 @@ import Admin from "./components/Admin";
 import AdminProfils from "./components/AdminProfils";
 import AdminCategory from "./components/AdminCategory";
 import AdminNetwork from "./components/AdminNetwork";
+import Mention from "./components/Mention";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
   {
     path:"/admin/network",
     element: <AdminNetwork/>
+  },
+  {
+    path:"/mention",
+    element: <Mention/>
   }
 ]);
 

@@ -54,7 +54,8 @@
   - [x] to member
   - [X] to admin
   - [X] design
-- [ ] Credits  
+- [X] Credits / Mention légale  
+- [ ] Responsive
 
 # v.1.2
 

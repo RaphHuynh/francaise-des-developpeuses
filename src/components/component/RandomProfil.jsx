@@ -29,8 +29,8 @@ function RandomProfil() {
                         </h1>
                         <a href={members[randomIndex].url_portfolio} className="block lg:hidden transition delay-75 h-56 mr-0 ml-auto hover:scale-105 mb-5"><img src={"http://127.0.0.1:8000/member/image_portfolio_by_id?id_member=" + members[randomIndex].id_member} alt="Profile Image" className="object-cover hover:contrast-125 h-56 duration-200 border border-black w-full"/></a>
                         <p className="text-base md:text-lg lg:text-xl md:mb-5 text-justify md:border-b pb-5">Voici un profil que nous souhaitons mettre en avant.</p>
-                        <h1 className="hidden lg:block text-3xl uppercase [text-shadow:_0px_0px_3px_rgb(0_0_0_/_100%)] text-beige hover:text-black hover:[text-shadow:_0px_0px_0px_rgb(0_0_0_/_100%)] w-fit">
-                            <Link to={`/portfolios/${members[randomIndex].id_member}`}>{members[randomIndex].username}</Link>
+                        <h1 className="my-2">
+                            <Link to={`/portfolios/${members[randomIndex].id_member}`} className="text-2xl hover:text-white hover:bg-black py-2 transition delay-100 w-fit">{members[randomIndex].username}</Link>
                         </h1>
                         <p className="text-base">{members[randomIndex].category_name}</p>
                     </aside>
