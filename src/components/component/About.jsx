@@ -3,7 +3,7 @@ import image from "../../assets/moi.jpeg";
 function About(){
     return (
         <article className="lg:grid lg:grid-cols-3 md:gap-8">
-            <aside className="">
+            <aside className="hidden lg:block">
                 <img src={image}></img>
             </aside>
             <aside className="col-span-2 mt-5">
