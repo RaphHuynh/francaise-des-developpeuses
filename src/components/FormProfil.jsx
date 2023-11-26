@@ -39,10 +39,19 @@ function FromProfil() {
     .catch((error) => {
       console.error(error);
     });
-
+  
     api_profil.getMemberById(id.profil).then((json) => {
       setResume(json);
       updateProfileImage();
+  
+      setUser({
+        id: id.profil,
+        lastname: json.lastname || "",
+        firstname: json.firstname || "",
+        description: json.description || "",
+        mail: json.mail || "",
+        url_portfolio: json.url_portfolio || "",
+      });
     });
   }, [id.profil, navigate]);
 

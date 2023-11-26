@@ -49,7 +49,7 @@ function Portfolio(){
                     <article className="flex flex-col 2xl:flex-row gap-8">
                         <article className="2xl:w-1/2">
                             <h1 className="text-xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">Categories</h1>
-                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 w-fit">
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 w-fit">
                                 {categories.map((category) => (
                                 <>
                                     <span className="md:text-xl border-2 border-black rounded-sm px-2 py-1">{category.name}</span>
