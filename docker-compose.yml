@@ -1,0 +1,10 @@
+# Web ui at http://web:4173
+version: "3"
+
+services:
+    web:
+        build: ./
+        container_name: web
+        # Uncomment the following line to open the web ui on port 4173
+        #ports:
+        #    - "4173:4173"
