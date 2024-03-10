@@ -110,7 +110,7 @@ function FormCategory() {
         setSelectedCategories([]);
         setSelectedCategoriesOfUser([]);
         fetchCategories();
-        fetch(`http://127.0.0.1:8000/member/category/${profil}`, {
+        fetch(`${baseUrl}/member/category/${profil}`, {
           method: 'GET',
           credentials: 'include',
         })

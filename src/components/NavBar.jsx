@@ -52,21 +52,21 @@ function NavBar() {
     const handleDeconnexion = () => {
         // Effectuer la requête de déconnexion vers l'endpoint FastAPI
         fetch(`${baseUrl}/session/delete?id_member=` + cookie, {
-          method: 'DELETE',
-          credentials: 'include',
-          redirect: "manual"
+            method: 'DELETE',
+            credentials: 'include',
+            redirect: "manual"
         })
-        .then((response) => {
-          if (response.type === "opaqueredirect") {
-            window.location.replace("http://127.0.0.1:5173/");
-          } else {
-            console.error('La déconnexion a échoué.');
-          }
-        })
-        .catch((error) => {
-          console.error('Erreur de déconnexion :', error);
-        });
-      };      
+            .then((response) => {
+                if (response.type === "opaqueredirect") {
+                    window.location.replace("http://127.0.0.1:5173/");
+                } else {
+                    console.error('La déconnexion a échoué.');
+                }
+            })
+            .catch((error) => {
+                console.error('Erreur de déconnexion :', error);
+            });
+    };
 
     return (
         <nav className="fixed w-full z-10 px-5 md:px-20">
@@ -77,7 +77,7 @@ function NavBar() {
                         <Link to="/" className="transition delay-75 text-sm md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">Accueil</Link>
                         <Link to="/portfolios" className="transition delay-75 text-sm md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">Portfolios</Link>
                         <Link to={`/profil/${cookie}`} className="transition delay-75 text-sm md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">Profil</Link>
-                        {isAdmin == true && 
+                        {isAdmin == true &&
                             <Link to="/admin" className="transition delay-75 text-sm md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2">
                                 Admin
                             </Link>
