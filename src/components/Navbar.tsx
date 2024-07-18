@@ -51,7 +51,7 @@ export default async function Navbar() {
             </form>
           ) : (
             <Link
-              href="/connexion"
+              href="/login"
               className="transition text-sm delay-75 md:text-xl text-white md:px-4 bg-black hover:bg-black/90 hover:text-white py-2"
             >
               Connexion

@@ -44,16 +44,32 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map("email_verified")
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  admin         Boolean   @default(false)
+  id             String    @id @default(cuid())
+  userId         Int?      @default(autoincrement())
+  name           String?
+  firstname      String?   @db.VarChar(50)
+  lastname       String?   @db.VarChar(50)
+  description    String?
+  email          String?   @unique
+  emailVerified  DateTime? @map("email_verified")
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
+  admin          Boolean   @default(false)
+  urlPortfolio   String?   @db.VarChar(320)
+  imagePortfolio Bytes?
 
   @@map("users")
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(255)
+}
+
+model Network {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(255)
 }
 
 model VerificationToken {
