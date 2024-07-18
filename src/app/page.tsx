@@ -26,7 +26,7 @@ export default function Home() {
           href="#About"
           className="text-xs md:text-2xl xl:text-3xl uppercase border-2 md:border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150"
         >
-          Comment s'inscrire ?
+          Comment s&apos;inscrire ?
         </a>
       </div>
     </section>
