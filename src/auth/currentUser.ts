@@ -1,21 +1,36 @@
 import { auth } from '@/lib/auth';
-import { User } from '@prisma/client';
+import { prisma } from '@/lib/db';
+import { redirect } from 'next/navigation';
 
 export const currentUser = async () => {
   const session = await auth();
 
   if (!session?.user) {
-    return null;
+    return undefined;
   }
 
-  return session.user as User;
+  const user = await prisma.user.findUnique({
+    where: {
+      id: session.user.id,
+    },
+    include: {
+      categories: true,
+      UserNetwork: {
+        include: {
+          network: true,
+        },
+      },
+    },
+  });
+
+  return user;
 };
 
 export const requiredCurrentUser = async () => {
   const user = await currentUser();
 
   if (!user) {
-    throw new Error('Not logged in');
+    redirect('/login');
   }
 
   return user;

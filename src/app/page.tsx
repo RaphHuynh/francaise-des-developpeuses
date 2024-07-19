@@ -1,3 +1,4 @@
+import About from '@/components/About';
 import Link from 'next/link';
 
 export default function Home() {
@@ -81,7 +82,7 @@ export default function Home() {
               <h1 className="text-xl  md:text-4xl lg:text-6xl mb-10 uppercase bg-black text-beige text-center">
                 Qui suis-je ?
               </h1>
-              {/* About */}
+              <About />
             </aside>
           </section>
         </article>

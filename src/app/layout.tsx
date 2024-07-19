@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
 import Navbar from '@/components/Navbar';
+import Providers from '@/components/providers';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: 'Française des développeuses',
@@ -15,8 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
+        <Providers>
+          <Toaster richColors />
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );

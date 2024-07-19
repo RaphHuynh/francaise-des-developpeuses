@@ -22,12 +22,14 @@ export default async function Navbar() {
           >
             Portfolios
           </Link>
-          <Link
-            href={`/profil/miaou`}
-            className="transition delay-75 text-sm md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2"
-          >
-            Profil
-          </Link>
+          {user && (
+            <Link
+              href={`/profil/${user?.userId}`}
+              className="transition delay-75 text-sm md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2"
+            >
+              Profil
+            </Link>
+          )}
           {user && user.admin && (
             <Link
               href="/admin"
