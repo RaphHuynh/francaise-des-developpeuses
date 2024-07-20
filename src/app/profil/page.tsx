@@ -2,7 +2,6 @@ import { requiredCurrentUser } from '@/auth/currentUser';
 import { Plus } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 export default async function ProfilPage() {
   const user = await requiredCurrentUser();
@@ -79,7 +78,7 @@ export default async function ProfilPage() {
                 <h1 className="text-2xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">
                   Categories
                 </h1>
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 w-fit">
+                <div className="flex flex-row flex-wrap gap-4 w-fit">
                   {user?.categories.map((category) => (
                     <>
                       <span className="md:text-xl border-2 border-black rounded-sm px-2 py-1">
@@ -88,8 +87,7 @@ export default async function ProfilPage() {
                     </>
                   ))}
                   <Link
-                    href={`/profil/${user.userId}/edit/category`}
-                    key={user.userId}
+                    href={`/profil/edit/category`}
                     className="flex border-2 border-black uppercase py-1 px-3 hover:bg-black hover:text-white items-center"
                   >
                     <Plus />
@@ -125,8 +123,7 @@ export default async function ProfilPage() {
                     </div>
                   ))}
                   <Link
-                    href={`/profil/${user.userId}/edit/network`}
-                    key={user.userId}
+                    href={`/profil/edit/network`}
                     className="flex border-2 border-black uppercase py-1 px-3 hover:bg-black hover:text-white items-center"
                   >
                     <Plus />
@@ -138,7 +135,7 @@ export default async function ProfilPage() {
         </section>
         <article className="text-center text-2xl">
           <Link
-            href={`/profil/${user.userId}/edit`}
+            href={`/profil/edit`}
             key={user.userId}
             className="border-2 border-black uppercase py-1 px-1 hover:bg-black hover:text-white"
           >

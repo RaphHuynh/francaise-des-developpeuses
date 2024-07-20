@@ -6,7 +6,7 @@ import { currentUser } from '@/auth/currentUser';
 export default async function LoginPage() {
   const user = await currentUser();
 
-  if (user) return redirect(`/profil/${user.userId}`);
+  if (user) return redirect(`/profil`);
 
   return (
     <section className="flex flex-col-reverse xl:flex-row items-center justify-center w-full pt-10 h-screen gap-4">

@@ -24,7 +24,7 @@ export default async function Navbar() {
           </Link>
           {user && (
             <Link
-              href={`/profil/${user?.userId}`}
+              href={`/profil`}
               className="transition delay-75 text-sm md:text-xl text-black md:px-4 hover:bg-black/90 hover:text-white py-2"
             >
               Profil

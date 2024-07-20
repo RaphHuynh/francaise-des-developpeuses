@@ -4,11 +4,7 @@ import ProfilForm from './ProfilForm';
 import { ArrowLeft } from 'lucide-react';
 import ImageForm from './ImageForm';
 
-export default async function PageProfil({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
+export default async function PageProfil() {
   const user = await requiredCurrentUser();
 
   return (
@@ -40,8 +36,7 @@ export default async function PageProfil({
         </article>
       </section>
       <Link
-        href={`/profil/${id}`}
-        key={id}
+        href={`/profil`}
         className="text-3xl bottom-2 fixed hover:bg-black hover:text-white rounded-full px-2 py-1 transition delay-100"
       >
         <ArrowLeft />
