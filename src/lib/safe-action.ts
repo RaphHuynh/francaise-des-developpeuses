@@ -1,4 +1,4 @@
-import { currentUser } from '@/auth/currentUser';
+import { currentUser, requiredCurrentUser } from '@/auth/currentUser';
 import { createSafeActionClient } from 'next-safe-action';
 
 class ActionError extends Error {
@@ -27,6 +27,20 @@ export const userAction = createSafeActionClient({
 
   if (!user) {
     throw new ActionError('You must be logged in');
+  }
+
+  return next({
+    ctx: { user },
+  });
+});
+
+export const adminAction = createSafeActionClient({
+  handleReturnedServerError,
+}).use(async ({ next }) => {
+  const user = await requiredCurrentUser();
+
+  if (!user.admin) {
+    throw new ActionError('You must be an admin');
   }
 
   return next({

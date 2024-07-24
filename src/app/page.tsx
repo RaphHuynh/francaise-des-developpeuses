@@ -1,4 +1,5 @@
 import About from '@/components/About';
+import RandomProfile from '@/components/RandomProfile';
 import Link from 'next/link';
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
         <h1 className="text-3xl md:text-6xl xl:text-9xl mr-0 ml-auto uppercase bg-black text-beige w-fit py-3 px-2 md:py-5 md:px-4 mb-10">
           Développeuses
         </h1>
-        <div className="md:w-full flex flex-col md:flex-row md:justify-center gap-2 md:gap-4">
+        <div className="md:w-full flex flex-col items-center md:flex-row md:justify-center gap-2 md:gap-4">
           <Link
             href="/portfolios"
             className="text-xs md:text-2xl xl:text-3xl uppercase border-2 md:border-4 hover:bg-black hover:text-white border-black w-fit py-2 px-4 transition delay-150"
@@ -57,7 +58,7 @@ export default function Home() {
               <h1 className="text-xl  md:text-4xl lg:text-6xl mb-10 uppercase bg-black text-beige text-center">
                 Profil mis en avant
               </h1>
-              {/* Random Profil */}
+              <RandomProfile />
             </figure>
           </section>
         </article>
@@ -80,7 +81,7 @@ export default function Home() {
             </aside>
             <aside>
               <h1 className="text-xl  md:text-4xl lg:text-6xl mb-10 uppercase bg-black text-beige text-center">
-                Qui suis-je ?
+                Qui sommes-nous ?
               </h1>
               <About />
             </aside>

@@ -1,29 +1,21 @@
 import { requiredCurrentUser } from '@/auth/currentUser';
+import React from 'react';
+import AddNetworkForm from './AddNetworkForm';
 import { prisma } from '@/lib/db';
-import AddCategoryForm from './AddCategoryForm';
-import { RemoveCategoryForm } from './RemoveCategoryForm';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import RemoveNetworkForm from './RemoveNetworkForm';
 
-export default async function CategoryPage() {
+export default async function NetworkPage() {
   const user = await requiredCurrentUser();
-
-  const categories = await prisma.category.findMany({
+  const networks = await prisma.network.findMany();
+  const networksOfUser = await prisma.network.findMany({
     where: {
-      NOT: {
-        users: {
-          some: {
+      UserNetwork: {
+        some: {
+          user: {
             id: user.id,
           },
-        },
-      },
-    },
-  });
-  const categoriesOfUser = await prisma.category.findMany({
-    where: {
-      users: {
-        some: {
-          id: user.id,
         },
       },
     },
@@ -33,16 +25,16 @@ export default async function CategoryPage() {
     <section className="flex flex-col w-full px-5 md:px-20 pt-28">
       <article className="w-full grid grid-cols-2 border-b pb-10 items-center">
         <h1 className="text-2xl lg:text-4xl xl:text-6xl uppercase">
-          Catégories
+          Réseaux sociaux
         </h1>
         <p className="text-sm lg:text-lg text-right">
-          Vous pouvez sélectionner des catégories ou retirer des catégories sur
-          cette page.
+          Vous pouvez ajouter, modifier les liens de vos réseaux sociaux ainsi
+          que les retirer.
         </p>
       </article>
-      <article className="w-full pt-12 gap-4 md:flex">
-        <AddCategoryForm categories={categories} />
-        <RemoveCategoryForm categoriesOfUser={categoriesOfUser} />
+      <article className="w-full md:flex gap-4 mt-10">
+        <AddNetworkForm networks={networks} currentUser={user} />
+        <RemoveNetworkForm networksOfUser={networksOfUser} />
       </article>
       <Link
         href={`/profil`}

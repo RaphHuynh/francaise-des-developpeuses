@@ -21,6 +21,9 @@ export default function AddCategoryForm({
     reset,
     formState: { errors },
   } = useForm<CategoriesType>({
+    defaultValues: {
+      categories: [],
+    },
     resolver: zodResolver(CategoriesSchema),
   });
 

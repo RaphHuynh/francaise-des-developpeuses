@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 export const CategoriesSchema = z.object({
-  categories: z.array(z.string().or(z.number()), {
-    message: 'Veuillez au moins sélectionner une catégorie',
+  categories: z.string().or(z.number()).array().min(1, {
+    message: 'Veuillez sélectionner au moins une catégorie',
   }),
 });
 

@@ -35,3 +35,13 @@ export const requiredCurrentUser = async () => {
 
   return user;
 };
+
+export const requiredAdminUser = async () => {
+  const user = await requiredCurrentUser();
+
+  if (!user.admin) {
+    throw new Error('Unauthorized');
+  }
+
+  return user;
+};

@@ -21,6 +21,9 @@ export function RemoveCategoryForm({
     reset,
     formState: { errors },
   } = useForm<CategoriesType>({
+    defaultValues: {
+      categories: [],
+    },
     resolver: zodResolver(CategoriesSchema),
   });
 
@@ -55,8 +58,6 @@ export function RemoveCategoryForm({
   return (
     <form
       onSubmit={handleSubmit(async (values) => {
-        console.log(values);
-
         await mutation.mutateAsync(values);
       })}
       className="md:w-1/2 pb-10 md:pb-0"

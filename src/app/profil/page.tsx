@@ -98,7 +98,7 @@ export default async function ProfilPage() {
                 <h1 className="text-2xl md:text-4xl my-5 text-beige bg-black uppercase py-1 px-1">
                   Network
                 </h1>
-                <div className="grid grid-cols-3 md:grid-cols-7 gap-4 w-fit">
+                <div className="flex gap-4 w-fit">
                   {user?.UserNetwork.map((userNetwork) => (
                     <div key={userNetwork.networkId}>
                       {['github', 'linkedin'].includes(
