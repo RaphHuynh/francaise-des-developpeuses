@@ -13,7 +13,8 @@ export const addCategoriesToUserAction = userAction
     await prisma.user.update({
       data: {
         categories: {
-          connect: parsedInput.categories.map((id: string | number) => ({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          connect: parsedInput.categories.map((id: any) => ({
             id,
           })),
         },
