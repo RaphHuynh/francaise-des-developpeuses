@@ -13,7 +13,9 @@ export const addCategoriesToUserAction = userAction
     await prisma.user.update({
       data: {
         categories: {
-          connect: parsedInput.categories.map((id: number) => ({ id })),
+          connect: parsedInput.categories.map((id: string | number) => ({
+            id: typeof id === 'string' ? parseInt(id) : id,
+          })),
         },
       },
       where: {
