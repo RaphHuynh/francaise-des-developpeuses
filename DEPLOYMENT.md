@@ -149,6 +149,20 @@ docker system df
 
 ## Dépannage
 
+### Erreur 'ContainerConfig' lors du démarrage
+Si vous obtenez l'erreur `KeyError: 'ContainerConfig'`, c'est que l'image Docker est corrompue :
+
+```bash
+# Solution automatique
+./fix-docker.sh
+
+# Solution manuelle
+docker-compose down --remove-orphans
+docker system prune -af
+docker-compose build --no-cache
+./deploy.sh
+```
+
 ### Si l'application ne démarre pas
 1. Vérifiez les logs : `docker-compose logs app`
 2. Vérifiez les variables d'environnement
