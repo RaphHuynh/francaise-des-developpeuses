@@ -9,8 +9,8 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Installer les dépendances basées sur le gestionnaire de paquets préféré
-COPY package.json package-lock.json* ./
-RUN npm ci
+COPY package.json ./
+RUN npm install --only=production
 
 # Reconstruire le code source seulement lorsque nécessaire
 FROM base AS builder
@@ -18,19 +18,22 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Installer toutes les dépendances (dev incluses) pour la construction
+RUN npm install
+
 # Générer le client Prisma
 RUN npx prisma generate
 
 # Construire l'application
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # Image de production, copier tous les fichiers et exécuter Next.js
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -51,7 +54,7 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
 CMD ["node", "server.js"]

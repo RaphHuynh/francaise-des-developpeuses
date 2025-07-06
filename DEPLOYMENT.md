@@ -62,14 +62,23 @@ Remplacez `votre-domaine.com` par votre vrai domaine.
 ### 4. Première construction et déploiement
 
 ```bash
+# Option A: Utiliser le script automatique (recommandé)
+./deploy.sh
+
+# Option B: Étape par étape si vous préférez contrôler
+# Générer package-lock.json si nécessaire
+npm install
+
 # Construire et démarrer sans SSL d'abord
 docker-compose up -d db
 sleep 30
 docker-compose up -d app
 
-# Exécuter les migrations
-docker-compose exec app npx prisma migrate deploy
+# Exécuter les migrations (peut échouer au premier démarrage)
+docker-compose exec app npx prisma migrate deploy || echo "Migrations à exécuter manuellement"
 ```
+
+**Note importante :** Si les migrations échouent au premier démarrage, c'est normal. Vous pouvez les exécuter manuellement après que tous les services soient en cours d'exécution.
 
 ### 5. Configurer SSL (Let's Encrypt)
 
